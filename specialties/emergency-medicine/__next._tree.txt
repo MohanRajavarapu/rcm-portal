@@ -1,5 +1,5 @@
-:HL["/rcm-portal/_next/static/chunks/0dr_r832sx95c.css","style"]
+:HL["/rcm-portal/_next/static/chunks/3li_qq9yp5ynm.css","style"]
 :HL["/rcm-portal/_next/static/media/03bda585a99c6450-s.p.32sris142tqlb.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/rcm-portal/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/rcm-portal/_next/static/media/fba5a26ea33df6a3-s.p.18rizl4rsrl42.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":4180,"slots":{"children":{"name":"specialties","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"emergency-medicine","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"dhGpx1W0GxT0g0pIg8Qr-"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4180,"slots":{"children":{"name":"specialties","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"emergency-medicine","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"f2Vdrt4m9jjkJsEQmMDAH"}
