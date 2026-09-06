@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://mohanrajavarapu.github.io/rcm-portal/sitemap.xml
