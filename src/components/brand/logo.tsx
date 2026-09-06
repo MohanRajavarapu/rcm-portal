@@ -30,7 +30,7 @@ export function Logo({
           height={667}
           className={cn(
             "w-auto object-contain object-center",
-            size === "footer" ? "h-7 sm:h-8" : "h-11 sm:h-[44px]",
+            size === "footer" ? "h-7 sm:h-8" : "h-14 sm:h-16",
           )}
           priority={size === "header"}
         />
