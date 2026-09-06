@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { withBasePath } from "@/lib/base-path";
 
 export function NewsletterForm() {
   const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ export function NewsletterForm() {
     event.preventDefault();
     setStatus("loading");
     setError("");
-    const res = await fetch("/api/v1/newsletter", {
+    const res = await fetch(withBasePath("/api/v1/newsletter"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),

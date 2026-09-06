@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { withBasePath } from "@/lib/base-path";
 import { services } from "@/content/services";
 import { specialties } from "@/content/specialties";
 import { cn } from "@/lib/utils";
@@ -46,7 +47,7 @@ export function LeadForm({ source = "contact" }: { source?: "contact" | "assessm
     event.preventDefault();
     setStatus("loading");
     setError("");
-    const res = await fetch("/api/v1/leads", {
+    const res = await fetch(withBasePath("/api/v1/leads"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...form, source }),

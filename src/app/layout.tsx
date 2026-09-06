@@ -3,6 +3,7 @@ import { Fraunces, Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { company } from "@/content/company";
+import { withBasePath } from "@/lib/base-path";
 import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({
@@ -21,15 +22,15 @@ const mono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://360vertexai.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://360vertexai.com"),
   title: {
     default: `${company.brandName} · AI-operated revenue cycle`,
     template: `%s · ${company.brandName}`,
   },
   description: company.description,
   icons: {
-    icon: "/brand/logo.jpg",
-    apple: "/brand/logo.jpg",
+    icon: withBasePath("/brand/logo.jpg"),
+    apple: withBasePath("/brand/logo.jpg"),
   },
   openGraph: {
     title: `${company.brandName} · AI-operated revenue cycle`,

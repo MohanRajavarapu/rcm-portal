@@ -30,7 +30,7 @@ export function PageHero({
         {crumbs ? (
           <p className="mb-3 text-xs tracking-[0.14em] text-[#d1d5db] uppercase">
             {crumbs.map((crumb, i) => (
-              <span key={crumb.href}>
+              <span key={`${crumb.href}-${i}`}>
                 {i > 0 ? " / " : null}
                 <Link href={crumb.href} className="text-cyan hover:text-mint">
                   {crumb.label}

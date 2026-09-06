@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import type { Job } from "@/content/jobs";
+import { withBasePath } from "@/lib/base-path";
 
 export function ApplyForm({ jobs, defaultJobId }: { jobs: Job[]; defaultJobId?: string }) {
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
@@ -17,7 +18,7 @@ export function ApplyForm({ jobs, defaultJobId }: { jobs: Job[]; defaultJobId?: 
     setError("");
     const form = new FormData(event.currentTarget);
     const payload = Object.fromEntries(form.entries());
-    const res = await fetch("/api/v1/careers/apply", {
+    const res = await fetch(withBasePath("/api/v1/careers/apply"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   description: `Open roles at ${company.legalName}.`,
 };
 
+export const dynamic = "force-static";
+
 export default function CareersPage() {
   return (
     <Suspense fallback={<div>Loading careers...</div>}>

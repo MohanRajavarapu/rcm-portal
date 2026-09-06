@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { withBasePath } from "@/lib/base-path";
 
 export function Logo({
   className,
@@ -19,20 +19,18 @@ export function Logo({
     >
       <span
         className={cn(
-          "overflow-hidden rounded-md bg-[#0b0c10]",
+          "block rounded-md bg-[#0b0c10]",
           light ? "ring-1 ring-white/10" : "ring-1 ring-white/8",
         )}
       >
-        <Image
-          src="/brand/logo.jpg"
+        {/* Native img so GitHub Pages basePath is applied once (next/image would prefix again). */}
+        <img
+          src={withBasePath("/brand/logo.jpg")}
           alt="360 VertexAI — Intelligent Automation"
-          width={770}
-          height={667}
           className={cn(
-            "w-auto object-contain object-center",
-            size === "footer" ? "h-7 sm:h-8" : "h-14 sm:h-16",
+            "h-11 w-auto max-w-[min(220px,58vw)] object-contain object-left sm:h-[44px]",
+            size === "footer" && "h-7 max-w-[160px] sm:h-8",
           )}
-          priority={size === "header"}
         />
       </span>
     </Link>

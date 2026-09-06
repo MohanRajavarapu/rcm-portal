@@ -43,5 +43,8 @@ next-env.d.ts
 # runtime stores for lead, career, and newsletter services
 .data/*.json
 
+# GitHub Pages API stash during static export
+.tmp-api-stash/
+
 # local tool scratch
 agent-tools/
