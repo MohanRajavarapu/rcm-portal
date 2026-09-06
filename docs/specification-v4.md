@@ -9,7 +9,7 @@ Status: file was not present in the workspace; this document records the v4 slic
 | --- | --- |
 | Legal name | 360VERTEXAI SOLUTIONS PRIVATE LIMITED |
 | Brand | 360VERTEXAI |
-| Email | mohan955@gmail.com |
+| Email |  (sales),  (careers) |
 | Mobile | 9492178765 (+91 94921 78765) |
 | Market | United States healthcare providers |
 | Delivery | India |

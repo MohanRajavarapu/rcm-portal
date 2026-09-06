@@ -13,7 +13,12 @@ export function getPublicContent() {
       cycle,
       summary,
     })),
-    specialties: specialties.map(({ slug, name, summary }) => ({ slug, name, summary })),
+    specialties: specialties.map(({ slug, name, summary, category }) => ({
+      slug,
+      name,
+      summary,
+      category,
+    })),
     jobs: jobs.map(({ id, title, team, location, type, summary }) => ({
       id,
       title,

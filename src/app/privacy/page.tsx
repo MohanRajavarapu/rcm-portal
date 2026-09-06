@@ -15,7 +15,7 @@ export default function PrivacyPage() {
         title="Privacy notice"
         lede="This notice covers the public marketing website only. Production RCM systems are covered by a BAA and a separate policy."
       />
-      <article className="mx-auto max-w-3xl space-y-5 px-4 py-16 text-[1.02rem] leading-7 sm:px-6">
+      <article className="mx-auto max-w-3xl space-y-5 px-4 py-10 text-[1.02rem] leading-7 text-slate-200 sm:px-6">
         <p>
           {company.legalName} (“we”) collects the business contact details you submit on this site:
           name, work email, phone, organization, specialty, and a free-text message about billing

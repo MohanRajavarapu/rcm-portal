@@ -3,7 +3,7 @@
 Public company website and API gateway for **360VERTEXAI** — an AI-operated US healthcare revenue cycle (RCM) practice, delivered from India.
 
 Legal entity: **360VERTEXAI SOLUTIONS PRIVATE LIMITED**  
-Email: [mohan955@gmail.com](mailto:mohan955@gmail.com)  
+Email: [contact@360vertexai.com](mailto:contact@360vertexai.com)  
 Mobile: [+91 94921 78765](tel:+919492178765)
 
 The original specification file (`Final_RCM_company_website_specification_v4_microservices.md`) was referenced from a local desktop path and was not in this repository. This codebase implements that v4 intent: a production-grade RCM company site with a microservices-shaped backend, HIPAA-safe public forms, and a complete public sitemap.

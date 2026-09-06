@@ -5,12 +5,14 @@ export const company = {
   tagline: "AI-operated revenue cycle. End to end.",
   description:
     "360VERTEXAI SOLUTIONS PRIVATE LIMITED is a healthcare revenue cycle company that combines certified RCM operations with applied AI. We help US physician groups, specialty practices, ASCs, and billing offices lift first-pass yield, cut preventable denials, and shorten days in A/R.",
-  email: "mohan955@gmail.com",
+  email: "contact@360vertexai.com",
+  salesEmail: "sales@360vertexai.com",
+  careersEmail: "careers@360vertexai.com",
   phoneDisplay: "+91 94921 78765",
   phoneTel: "+919492178765",
   region: "India",
   serving: "United States healthcare providers",
-  hours: "Monday–Saturday, 9:00–18:30 IST (US coverage windows by engagement)",
+  hours: "24/7 coverage aligned to US EST/PST business hours",
   url: "https://360vertexai.com",
 } as const;
 

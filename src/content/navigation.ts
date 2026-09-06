@@ -1,25 +1,16 @@
 export const primaryNav = [
-  {
-    href: "/services",
-    label: "Services",
-    children: [
-      { href: "/services", label: "All services" },
-      { href: "/services/eligibility-benefits", label: "Eligibility" },
-      { href: "/services/medical-coding", label: "Medical coding" },
-      { href: "/services/claims-submission", label: "Claims" },
-      { href: "/services/denial-management", label: "Denials" },
-      { href: "/services/accounts-receivable", label: "A/R follow-up" },
-    ],
-  },
+  { href: "/about", label: "About" },
+  { href: "/why", label: "Why 360VERTEXAI" },
+  { href: "/services", label: "Services" },
   { href: "/specialties", label: "Specialties" },
   { href: "/technology", label: "Technology" },
-  { href: "/about", label: "About" },
   { href: "/careers", label: "Careers" },
 ] as const;
 
 export const footerNav = {
   company: [
     { href: "/about", label: "About" },
+    { href: "/why", label: "Why 360VERTEXAI" },
     { href: "/careers", label: "Careers" },
     { href: "/contact", label: "Contact" },
     { href: "/technology", label: "Technology" },

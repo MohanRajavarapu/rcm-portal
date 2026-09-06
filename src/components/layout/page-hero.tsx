@@ -1,26 +1,38 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
+import { LeadForm } from "@/components/forms/lead-form";
 
 export function PageHero({
   eyebrow,
   title,
   lede,
   crumbs,
+  compact = false,
+  children,
 }: {
   eyebrow?: string;
   title: string;
   lede?: string;
   crumbs?: { href: string; label: string }[];
+  compact?: boolean;
+  children?: ReactNode;
 }) {
   return (
     <section className="hero-wash relative overflow-hidden text-white">
       <div className="vertex-grid pointer-events-none absolute inset-0 opacity-40" />
-      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+      <div
+        className={
+          compact
+            ? "relative mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10"
+            : "relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14"
+        }
+      >
         {crumbs ? (
-          <p className="mb-5 text-xs tracking-[0.14em] text-white/55 uppercase">
+          <p className="mb-3 text-xs tracking-[0.14em] text-slate-300 uppercase">
             {crumbs.map((crumb, i) => (
               <span key={crumb.href}>
                 {i > 0 ? " / " : null}
-                <Link href={crumb.href} className="hover:text-vertex">
+                <Link href={crumb.href} className="text-emerald-400 hover:text-emerald-300">
                   {crumb.label}
                 </Link>
               </span>
@@ -28,10 +40,13 @@ export function PageHero({
           </p>
         ) : null}
         {eyebrow ? (
-          <p className="mb-3 text-xs tracking-[0.22em] text-vertex uppercase">{eyebrow}</p>
+          <p className="mb-2 text-xs font-semibold tracking-[0.22em] text-mint uppercase">{eyebrow}</p>
         ) : null}
         <h1 className="max-w-3xl text-4xl leading-[1.1] text-balance sm:text-5xl">{title}</h1>
-        {lede ? <p className="mt-5 max-w-2xl text-base leading-7 text-white/72 sm:text-lg">{lede}</p> : null}
+        {lede ? (
+          <p className="mt-3 max-w-[65ch] text-base leading-7 text-slate-200 sm:text-lg">{lede}</p>
+        ) : null}
+        {children}
       </div>
     </section>
   );
@@ -39,20 +54,19 @@ export function PageHero({
 
 export function CtaBand() {
   return (
-    <section className="border-t border-border bg-mist">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-12 sm:flex-row sm:items-center sm:px-6">
-        <div>
-          <h2 className="text-3xl">Ready for a revenue assessment?</h2>
-          <p className="mt-2 max-w-xl text-muted-foreground">
-            Tell us specialty, monthly visit volume, and EHR. Leave patient data out until we have a BAA.
+    <section className="border-t border-white/10 bg-navy" id="assessment">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-12">
+        <div className="lg:col-span-4">
+          <p className="text-xs font-semibold tracking-[0.2em] text-mint uppercase">Revenue assessment</p>
+          <h2 className="mt-2 text-2xl sm:text-3xl">Tell us the practice. Keep patients off this form.</h2>
+          <p className="mt-3 max-w-[65ch] text-sm leading-6 text-slate-200">
+            Specialty, monthly visit volume, and EHR. Leave patient data out until we have a BAA. The
+            header CTA stays available on every page.
           </p>
         </div>
-        <Link
-          href="/contact"
-          className="inline-flex h-11 items-center rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-        >
-          Contact 360VERTEXAI
-        </Link>
+        <div className="lg:col-span-8">
+          <LeadForm source="assessment" />
+        </div>
       </div>
     </section>
   );

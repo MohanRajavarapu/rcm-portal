@@ -6,6 +6,7 @@ export type Service = {
   outcome: string;
   body: string[];
   capabilities: string[];
+  stats: { value: string; label: string }[];
 };
 
 export const services: Service[] = [
@@ -26,6 +27,11 @@ export const services: Service[] = [
       "Benefit summaries for high-dollar visits",
       "Front-desk collection talking points",
     ],
+    stats: [
+      { value: "99.2%", label: "Verification rate target" },
+      { value: "40%", label: "Reduction in eligibility denials" },
+      { value: "<24h", label: "Batch eligibility turnaround" },
+    ],
   },
   {
     slug: "prior-authorization",
@@ -43,6 +49,11 @@ export const services: Service[] = [
       "Clinical packet checklists",
       "Status chase and expiry alerts",
       "Peer-to-peer coordination handoff",
+    ],
+    stats: [
+      { value: "30%", label: "Fewer day-of cancellations" },
+      { value: "48h", label: "Median auth status cycle" },
+      { value: "92%", label: "Complete clinical packets" },
     ],
   },
   {
@@ -62,6 +73,11 @@ export const services: Service[] = [
       "NCCI, MUE, LCD/NCD checks",
       "Provider query workflow",
     ],
+    stats: [
+      { value: "98%+", label: "Coder-attested accuracy" },
+      { value: "25%", label: "Fewer coding-related denials" },
+      { value: "<2d", label: "Coding turnaround target" },
+    ],
   },
   {
     slug: "charge-capture",
@@ -79,6 +95,11 @@ export const services: Service[] = [
       "Modifier and unit QA",
       "Missing-charge audits",
       "Hold-bill aging",
+    ],
+    stats: [
+      { value: "15%", label: "Missed-charge recovery lift" },
+      { value: "99%", label: "Encounter-to-charge match" },
+      { value: "<5d", label: "Hold-bill aging target" },
     ],
   },
   {
@@ -98,6 +119,11 @@ export const services: Service[] = [
       "Payer-specific edit libraries",
       "Attachment and medical-records routing",
     ],
+    stats: [
+      { value: "98%+", label: "First-pass clean claim rate" },
+      { value: "Same day", label: "Clearinghouse reject workdown" },
+      { value: "837P/I", label: "Professional and institutional" },
+    ],
   },
   {
     slug: "denial-management",
@@ -115,6 +141,11 @@ export const services: Service[] = [
       "Appeal letter production",
       "Corrected claim workflows",
       "Denial-prevention feedback loops",
+    ],
+    stats: [
+      { value: "35%", label: "Average denial-mix reduction" },
+      { value: "21d", label: "Appeal cycle target" },
+      { value: "Root-cause", label: "CARC taxonomy, not boilerplate" },
     ],
   },
   {
@@ -134,6 +165,11 @@ export const services: Service[] = [
       "High-dollar escalation",
       "Client write-off policy adherence",
     ],
+    stats: [
+      { value: "<30d", label: "Target days in A/R" },
+      { value: "90%", label: "High-dollar inventory touched" },
+      { value: "SLA", label: "Payer-specific follow-up cadence" },
+    ],
   },
   {
     slug: "payment-posting",
@@ -151,6 +187,11 @@ export const services: Service[] = [
       "Unmatched remit research",
       "Underpayment detection",
       "Takeback and recoup handling",
+    ],
+    stats: [
+      { value: "Same cycle", label: "ERA/EFT posting" },
+      { value: "Underpay", label: "Contract variance queued" },
+      { value: "Dual control", label: "Adjustment posting" },
     ],
   },
   {
@@ -170,6 +211,11 @@ export const services: Service[] = [
       "Insurance-found-later rebill",
       "Courtesy and collections scripts",
     ],
+    stats: [
+      { value: "Post-835", label: "Statements after adjudication" },
+      { value: "Plans", label: "Configured payment-plan handling" },
+      { value: "Brand-safe", label: "Client-approved outreach scripts" },
+    ],
   },
   {
     slug: "credentialing",
@@ -187,6 +233,11 @@ export const services: Service[] = [
       "CAQH maintenance",
       "Effective-date tracking",
       "Recredentialing calendar",
+    ],
+    stats: [
+      { value: "CAQH", label: "Attestations kept current" },
+      { value: "Effective dates", label: "Tracked before first billed DOS" },
+      { value: "Recred", label: "Silent term dates prevented" },
     ],
   },
   {
@@ -206,6 +257,11 @@ export const services: Service[] = [
       "Coder / biller productivity",
       "Denial-root clustering",
     ],
+    stats: [
+      { value: "Weekly", label: "Ops pack to finance and RCM" },
+      { value: "Payer slice", label: "Denial mix by specialty" },
+      { value: "Live", label: "Inventory, not last-quarter rumor" },
+    ],
   },
   {
     slug: "rcm-consulting",
@@ -223,6 +279,11 @@ export const services: Service[] = [
       "EHR / PM configuration notes",
       "Staffing and queue design",
       "90-day action plan",
+    ],
+    stats: [
+      { value: "Ranked", label: "Leakage by recoverability" },
+      { value: "90-day", label: "Written action plan" },
+      { value: "Optional", label: "Convert assessment to operations" },
     ],
   },
 ];

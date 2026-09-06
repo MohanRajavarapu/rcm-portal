@@ -1,18 +1,23 @@
 export const faqs = [
   {
+    question: "How long does onboarding take?",
+    answer:
+      "Most groups complete legal, access design, and a parallel-run in four to eight weeks. Timeline depends on BAA turnaround, EHR/clearinghouse access, and whether we start with a denial slice or the full cycle. Cash should not dip on cutover; we run dual until posting matches.",
+  },
+  {
+    question: "How do you integrate with our EHR?",
+    answer:
+      "We work inside the PM/EHR and clearinghouse you already run—commonly Epic, Athenahealth, Cerner, eClinicalWorks, NextGen, and Kareo. Connectivity, workqueues, and the access model are confirmed in the revenue assessment. No live patient data moves through this website.",
+  },
+  {
+    question: "How do you keep AI from coding or appealing without a human?",
+    answer:
+      "Models flag eligibility gaps, coding variance, likely edits, and denial clusters. Certified staff attest codes, write appeals, and contact payers. Nothing auto-submits an 837 or auto-posts an appeal. That human-in-the-loop split is how the work stays accurate and defensible.",
+  },
+  {
     question: "Do you work with US payers from India?",
     answer:
       "Yes. 360VERTEXAI SOLUTIONS PRIVATE LIMITED operates from India and serves United States providers. Production work follows HIPAA-aligned controls, client BAAs, and payer companion guides. This public website never accepts PHI.",
-  },
-  {
-    question: "Will AI replace our coders or billers?",
-    answer:
-      "No. Models flag eligibility gaps, coding variance, and likely denials. Certified staff remain responsible for codes, appeals, and payer contact. That split is how we stay accurate and defensible.",
-  },
-  {
-    question: "Which EHRs and clearinghouses do you support?",
-    answer:
-      "We engage around the systems you already run—commonly eClinicalWorks, Athenahealth, NextGen, AdvancedMD, Kareo, and major clearinghouses. An assessment confirms connectivity, workqueues, and access model before go-live.",
   },
   {
     question: "Can we outsource only denials or A/R?",

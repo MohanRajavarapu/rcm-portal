@@ -39,7 +39,7 @@ export function LeadForm({ source = "contact" }: { source?: "contact" | "assessm
 
   if (status === "ok") {
     return (
-      <div className="rounded-xl border border-border bg-mist p-6">
+      <div className="glass-panel rounded-xl p-6">
         <p className="font-heading text-2xl">Request received</p>
         <p className="mt-2 text-sm leading-6 text-muted-foreground">
           Reference {id}. We will reply from our operations inbox. Do not send patient identifiers,
@@ -77,7 +77,7 @@ export function LeadForm({ source = "contact" }: { source?: "contact" | "assessm
           <select
             id="specialty"
             name="specialty"
-            className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+            className="h-11 w-full rounded-lg border border-input bg-[#0f282d] px-2.5 text-sm text-slate-200"
             defaultValue=""
           >
             <option value="">Select</option>
@@ -94,7 +94,7 @@ export function LeadForm({ source = "contact" }: { source?: "contact" | "assessm
           <select
             id="interest"
             name="interest"
-            className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+            className="h-11 w-full rounded-lg border border-input bg-[#0f282d] px-2.5 text-sm text-slate-200"
             defaultValue=""
           >
             <option value="">Select</option>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Badge } from "@/components/ui/badge";
 import { CtaBand, PageHero } from "@/components/layout/page-hero";
 import { getSpecialty, specialties } from "@/content/specialties";
 
@@ -24,23 +25,35 @@ export default async function SpecialtyPage({ params }: Props) {
   return (
     <>
       <PageHero
+        compact
         crumbs={[
           { href: "/", label: "Home" },
           { href: "/specialties", label: "Specialties" },
           { href: `/specialties/${specialty.slug}`, label: specialty.name },
         ]}
         title={specialty.name}
-        lede={specialty.summary}
+        lede={`${specialty.category}. ${specialty.summary}`}
       />
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <h2 className="text-2xl">Where we concentrate</h2>
+      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+        <Badge variant="secondary">{specialty.category}</Badge>
+        <h2 className="mt-4 text-2xl">Where we concentrate</h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-3">
           {specialty.focus.map((item) => (
-            <li key={item} className="rounded-xl border border-border bg-card p-4 text-sm leading-6">
+            <li key={item} className="rounded-xl border border-white/10 bg-card p-4 text-sm leading-6 text-slate-200">
               {item}
             </li>
           ))}
         </ul>
+        {specialty.workflow ? (
+          <div className="mt-8 rounded-xl border border-white/10 bg-card p-5">
+            <h3 className="text-xl">Actionable workflow</h3>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-200">
+              {specialty.workflow.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </section>
       <CtaBand />
     </>

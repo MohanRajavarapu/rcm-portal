@@ -34,7 +34,7 @@ export function ApplyForm({ jobs, defaultJobId }: { jobs: Job[]; defaultJobId?: 
 
   if (status === "ok") {
     return (
-      <div className="rounded-xl border border-border bg-mist p-6">
+      <div className="glass-panel rounded-xl p-6">
         <p className="font-heading text-2xl">Application received</p>
         <p className="mt-2 text-sm text-muted-foreground">
           If the role is a match, we will write to the email you provided. Do not attach patient work
@@ -45,7 +45,7 @@ export function ApplyForm({ jobs, defaultJobId }: { jobs: Job[]; defaultJobId?: 
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-4">
+    <form onSubmit={onSubmit} className="relative z-20 grid gap-4">
       <div className="grid gap-1.5">
         <Label htmlFor="jobId">Role</Label>
         <select
@@ -53,7 +53,7 @@ export function ApplyForm({ jobs, defaultJobId }: { jobs: Job[]; defaultJobId?: 
           name="jobId"
           required
           defaultValue={defaultJobId ?? jobs[0]?.id}
-          className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+          className="relative z-20 h-11 w-full rounded-lg border border-input bg-[#0f282d] px-2.5 text-sm text-slate-200"
         >
           {jobs.map((job) => (
             <option key={job.id} value={job.id}>

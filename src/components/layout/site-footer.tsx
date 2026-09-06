@@ -9,24 +9,34 @@ import { services } from "@/content/services";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-forest text-white">
+    <footer className="border-t border-white/8 bg-navy text-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Logo light />
-          <p className="mt-4 max-w-sm text-sm leading-6 text-white/70">{company.description}</p>
-          <p className="mt-4 text-sm text-white/80">
-            <a className="underline-offset-4 hover:underline" href={`mailto:${company.email}`}>
+          <Logo light size="footer" />
+          <p className="mt-4 max-w-sm text-sm leading-6 text-slate-200">{company.description}</p>
+          <p className="mt-4 text-sm text-slate-200">
+            <a className="text-emerald-400 underline-offset-4 hover:text-emerald-300 hover:underline" href={`mailto:${company.email}`}>
               {company.email}
+            </a>
+            <br />
+            <a className="text-emerald-400 underline-offset-4 hover:text-emerald-300 hover:underline" href={`mailto:${company.salesEmail}`}>
+              {company.salesEmail}
+            </a>
+            <br />
+            <a className="text-emerald-400 underline-offset-4 hover:text-emerald-300 hover:underline" href={`mailto:${company.careersEmail}`}>
+              {company.careersEmail}
             </a>
             <br />
             <a className="underline-offset-4 hover:underline" href={`tel:${company.phoneTel}`}>
               {company.phoneDisplay}
             </a>
+            <br />
+            <span className="text-slate-300">{company.hours}</span>
           </p>
         </div>
         <div className="md:col-span-2">
-          <p className="text-xs tracking-[0.16em] text-vertex uppercase">Company</p>
-          <ul className="mt-3 space-y-2 text-sm text-white/75">
+          <p className="text-xs tracking-[0.16em] text-mint uppercase">Company</p>
+          <ul className="mt-3 space-y-2 text-sm text-slate-200">
             {footerNav.company.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="hover:text-white">
@@ -37,8 +47,8 @@ export function SiteFooter() {
           </ul>
         </div>
         <div className="md:col-span-3">
-          <p className="text-xs tracking-[0.16em] text-vertex uppercase">Cycle</p>
-          <ul className="mt-3 space-y-2 text-sm text-white/75">
+          <p className="text-xs font-semibold tracking-[0.16em] text-mint uppercase">Services</p>
+          <ul className="mt-3 space-y-2 text-sm text-slate-200">
             {services.slice(0, 6).map((service) => (
               <li key={service.slug}>
                 <Link href={`/services/${service.slug}`} className="hover:text-white">
@@ -49,8 +59,8 @@ export function SiteFooter() {
           </ul>
         </div>
         <div className="md:col-span-3">
-          <p className="text-xs tracking-[0.16em] text-vertex uppercase">Operations notes</p>
-          <p className="mt-3 mb-3 text-sm text-white/70">
+          <p className="text-xs tracking-[0.16em] text-mint uppercase">Operations notes</p>
+          <p className="mt-3 mb-3 text-sm text-slate-200">
             Occasional writing on denials, coding QA, and AI that stays in its lane. No patient data.
           </p>
           <NewsletterForm />

@@ -27,10 +27,15 @@ export const metadata: Metadata = {
     template: `%s · ${company.brandName}`,
   },
   description: company.description,
+  icons: {
+    icon: "/brand/logo.jpg",
+    apple: "/brand/logo.jpg",
+  },
   openGraph: {
     title: `${company.brandName} · AI-operated revenue cycle`,
     description: company.description,
     type: "website",
+    images: [{ url: "/brand/logo.jpg", alt: "360 VertexAI — Intelligent Automation" }],
   },
 };
 
@@ -49,7 +54,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${display.variable} ${mono.variable} h-full`}
+      data-scroll-behavior="smooth"
+      className={`${sans.variable} ${display.variable} ${mono.variable} dark h-full`}
     >
       <body className="flex min-h-full flex-col">
         <script
