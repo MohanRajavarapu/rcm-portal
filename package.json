@@ -1,12 +1,15 @@
 {
   "name": "360vertexai-website",
   "version": "0.4.0",
+  "homepage": "https://mohanrajavarapu.github.io/rcm-portal",
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --port 45281",
     "build": "next build",
     "start": "next start --hostname 0.0.0.0 --port 45281",
-    "lint": "eslint"
+    "lint": "eslint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out --nojekyll"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
@@ -26,6 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { CareersContent } from "@/components/careers/careers-content";
-import { jobs } from "@/content/jobs";
+import { Suspense } from "react";
+import { CareersContentWrapper } from "@/components/careers/careers-content-wrapper";
 import { company } from "@/content/company";
 
 export const metadata: Metadata = {
@@ -8,11 +8,10 @@ export const metadata: Metadata = {
   description: `Open roles at ${company.legalName}.`,
 };
 
-type Props = { searchParams: Promise<{ role?: string }> };
-
-export default async function CareersPage({ searchParams }: Props) {
-  const { role } = await searchParams;
-  const defaultJobId = jobs.some((job) => job.id === role) ? role : jobs[0]?.id;
-
-  return <CareersContent defaultJobId={defaultJobId} />;
+export default function CareersPage() {
+  return (
+    <Suspense fallback={<div>Loading careers...</div>}>
+      <CareersContentWrapper />
+    </Suspense>
+  );
 }

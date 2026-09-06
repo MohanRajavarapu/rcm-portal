@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { services } from "@/content/services";
 import { specialties } from "@/content/specialties";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     "",
@@ -17,17 +19,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms",
   ];
   const now = new Date();
+
   return [
     ...staticPaths.map((path) => ({
-      url: `https://360vertexai.com${path}`,
+      url: `https://mohanrajavarapu.github.io/rcm-portal${path}`,
       lastModified: now,
     })),
     ...services.map((service) => ({
-      url: `https://360vertexai.com/services/${service.slug}`,
+      url: `https://mohanrajavarapu.github.io/rcm-portal/services/${service.slug}`,
       lastModified: now,
     })),
     ...specialties.map((specialty) => ({
-      url: `https://360vertexai.com/specialties/${specialty.slug}`,
+      url: `https://mohanrajavarapu.github.io/rcm-portal/specialties/${specialty.slug}`,
       lastModified: now,
     })),
   ];

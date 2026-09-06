@@ -1,8 +1,13 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://360vertexai.com/sitemap.xml",
+    rules: {
+      userAgent: "*",
+      allow: "/",
+    },
+    sitemap: "https://mohanrajavarapu.github.io/rcm-portal/sitemap.xml",
   };
 }
