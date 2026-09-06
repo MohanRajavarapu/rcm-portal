@@ -1,31 +1,86 @@
-import { ehrSystems } from "@/content/trust";
-
-function Wordmark({ name }: { name: string }) {
+function EpicLogo() {
   return (
-    <div className="flex h-14 min-w-[11.5rem] items-center justify-center rounded-xl border border-white/8 bg-card/80 px-5">
-      <span className="text-sm font-semibold tracking-wide text-foreground/85">{name}</span>
-    </div>
+    <svg viewBox="0 0 120 32" className="h-8 w-auto" aria-label="Epic">
+      <rect width="120" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
+      <text x="60" y="21" textAnchor="middle" fill="#E0E0E0" fontSize="13" fontWeight="700" fontFamily="system-ui,sans-serif">
+        EPIC
+      </text>
+    </svg>
   );
 }
 
-export function EhrBanner() {
-  const loop = [...ehrSystems, ...ehrSystems];
+function AthenaLogo() {
   return (
-    <section className="border-b border-border bg-navy/60" aria-label="Compatible EHR systems">
-      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <p className="text-center text-xs tracking-[0.2em] text-mint uppercase">EHR integration</p>
-        <p className="mt-2 text-center text-sm text-muted-foreground">
+    <svg viewBox="0 0 160 32" className="h-8 w-auto" aria-label="Athenahealth">
+      <rect width="160" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
+      <text x="80" y="21" textAnchor="middle" fill="#00E5FF" fontSize="11" fontWeight="600" fontFamily="system-ui,sans-serif">
+        athenahealth
+      </text>
+    </svg>
+  );
+}
+
+function CernerLogo() {
+  return (
+    <svg viewBox="0 0 120 32" className="h-8 w-auto" aria-label="Cerner">
+      <rect width="120" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
+      <text x="60" y="21" textAnchor="middle" fill="#E0E0E0" fontSize="12" fontWeight="700" fontFamily="system-ui,sans-serif">
+        CERNER
+      </text>
+    </svg>
+  );
+}
+
+function EclinicalworksLogo() {
+  return (
+    <svg viewBox="0 0 180 32" className="h-8 w-auto" aria-label="eClinicalWorks">
+      <rect width="180" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
+      <text x="90" y="21" textAnchor="middle" fill="#00E599" fontSize="10" fontWeight="600" fontFamily="system-ui,sans-serif">
+        eClinicalWorks
+      </text>
+    </svg>
+  );
+}
+
+function NextGenLogo() {
+  return (
+    <svg viewBox="0 0 130 32" className="h-8 w-auto" aria-label="NextGen">
+      <rect width="130" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
+      <text x="65" y="21" textAnchor="middle" fill="#E0E0E0" fontSize="11" fontWeight="700" fontFamily="system-ui,sans-serif">
+        NextGen
+      </text>
+    </svg>
+  );
+}
+
+function KareoLogo() {
+  return (
+    <svg viewBox="0 0 100 32" className="h-8 w-auto" aria-label="Kareo">
+      <rect width="100" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
+      <text x="50" y="21" textAnchor="middle" fill="#00E5FF" fontSize="12" fontWeight="700" fontFamily="system-ui,sans-serif">
+        Kareo
+      </text>
+    </svg>
+  );
+}
+
+const logos = [EpicLogo, AthenaLogo, CernerLogo, EclinicalworksLogo, NextGenLogo, KareoLogo];
+
+export function EhrBanner() {
+  return (
+    <section className="border-b border-white/8 bg-[#121212]" aria-label="Compatible EHR systems">
+      <div className="page-section py-8">
+        <p className="text-center text-xs font-semibold tracking-[0.2em] text-mint uppercase">EHR integration</p>
+        <p className="mt-2 text-center text-sm text-[#d1d5db]">
           We operate inside the practice-management stack you already run.
         </p>
-        <div className="relative mt-6 overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-navy to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-navy to-transparent" />
-          <div className="ehr-marquee-track flex w-max gap-3">
-            {loop.map((name, index) => (
-              <Wordmark key={`${name}-${index}`} name={name} />
-            ))}
-          </div>
-        </div>
+        <ul className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+          {logos.map((Logo, index) => (
+            <li key={index}>
+              <Logo />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

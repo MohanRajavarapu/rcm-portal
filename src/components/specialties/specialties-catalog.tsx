@@ -22,11 +22,7 @@ export function SpecialtiesCatalog() {
 
   return (
     <div>
-      <div
-        className="flex flex-wrap gap-2"
-        role="tablist"
-        aria-label="Specialty categories"
-      >
+      <div className="flex flex-wrap gap-2" role="tablist" aria-label="Specialty categories">
         {filters.map((item) => (
           <button
             key={item}
@@ -38,7 +34,7 @@ export function SpecialtiesCatalog() {
               "rounded-full border px-3.5 py-1.5 text-sm transition-colors",
               filter === item
                 ? "border-mint bg-mint text-primary-foreground"
-                : "border-white/10 bg-card text-slate-200 hover:border-emerald-400/30 hover:text-foreground",
+                : "border-white/20 bg-transparent text-[#d1d5db] hover:border-cyan/40 hover:text-white",
             )}
           >
             {item}
@@ -48,11 +44,11 @@ export function SpecialtiesCatalog() {
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((specialty) => (
           <Link key={specialty.slug} href={`/specialties/${specialty.slug}`}>
-            <Card className="h-full transition-colors hover:border-emerald-400/30">
+            <Card className="interactive-card h-full">
               <CardHeader>
                 <Badge variant="secondary">{specialty.category}</Badge>
                 <CardTitle className="mt-2 text-xl">{specialty.name}</CardTitle>
-                <CardDescription className="leading-6 text-slate-200">{specialty.summary}</CardDescription>
+                <CardDescription className="leading-[1.6] text-[#d1d5db]">{specialty.summary}</CardDescription>
               </CardHeader>
             </Card>
           </Link>

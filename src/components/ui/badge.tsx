@@ -10,7 +10,7 @@ const badgeVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
         secondary:
-          "h-auto border border-mint/45 bg-mint/20 px-2.5 py-0.5 text-[0.7rem] font-semibold tracking-wide text-mint uppercase [a]:hover:bg-mint/30",
+          "h-auto border border-cyan/40 bg-cyan/15 px-2.5 py-0.5 text-[0.7rem] font-semibold tracking-wide text-cyan uppercase [a]:hover:bg-cyan/25",
         destructive:
           "bg-destructive/10 text-destructive focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:focus-visible:ring-destructive/40 [a]:hover:bg-destructive/20",
         outline:

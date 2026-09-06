@@ -22,24 +22,20 @@ export default function WhyPage() {
         lede="We own the seams of the cycle—eligibility through posting—with models that flag risk and certified staff who attest every production decision."
       />
       <MetricsBar />
-      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+      <section className="page-section py-8">
         <div className="grid gap-4 md:grid-cols-2">
           {differentiators.map((item) => (
-            <article key={item.title} className="glass-panel rounded-xl p-6">
+            <article key={item.title} className="glass-panel interactive-card rounded-xl p-6">
               <h2 className="text-xl">{item.title}</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-200">{item.body}</p>
+              <p className="mt-2 text-sm leading-[1.6] text-[#d1d5db]">{item.body}</p>
             </article>
           ))}
         </div>
-        <div className="mt-8 flex flex-wrap items-center gap-4">
-          <Link href="/technology" className="text-sm font-medium text-emerald-400 hover:text-emerald-300">
-            See the security model
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <Link href="/technology" className="text-sm font-medium text-cyan hover:text-mint">
+            See the security model →
           </Link>
-          <span className="text-white/20">·</span>
-          <Link href="/technology" className="text-sm font-medium text-emerald-400 hover:text-emerald-300">
-            Explore security model
-          </Link>
-          <Link href="/contact" className={cn(buttonVariants({ size: "lg" }), "h-10 px-4 font-semibold")}>
+          <Link href="/contact" className={cn(buttonVariants({ size: "lg" }), "btn-primary h-10 px-4")}>
             Request an assessment
           </Link>
         </div>

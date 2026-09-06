@@ -23,22 +23,22 @@ export default function HomePage() {
     <>
       <section className="hero-wash relative overflow-hidden text-white">
         <div className="vertex-grid pointer-events-none absolute inset-0 opacity-50" />
-        <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:py-20">
-          <div className="lg:col-span-7">
-            <p className="text-xs tracking-[0.22em] text-mint uppercase">
+        <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold tracking-[0.22em] text-mint uppercase">
               {company.legalName}
             </p>
             <h1 className="mt-4 text-4xl leading-[1.08] text-balance sm:text-6xl">
               Recover the revenue the visit already earned.
             </h1>
-            <p className="mt-4 max-w-[65ch] text-lg leading-8 text-slate-200">
+            <p className="mt-4 max-w-[65ch] text-lg leading-[1.6] text-[#e0e0e0]">
               End-to-end US healthcare RCM—eligibility through posting—run with certified operators
               and AI that flags risk instead of inventing codes. Built for physician groups, ASCs,
               and specialty practices.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/contact" className={cn(buttonVariants({ size: "lg" }), "h-11 px-5 font-semibold")}>
-                Request a revenue assessment
+              <Link href="/contact" className={cn(buttonVariants({ size: "lg" }), "btn-primary h-11 px-5")}>
+                Get Started
               </Link>
               <Link
                 href="/services"
@@ -50,20 +50,21 @@ export default function HomePage() {
                 View the cycle
               </Link>
             </div>
-            <p className="mt-6 text-sm text-white/50">
+            <p className="mt-6 text-sm text-[#d1d5db]">
               {company.email} · {company.phoneDisplay} · No PHI on this website
             </p>
           </div>
-          <div className="lg:col-span-5">
-            <div className="glass-panel rounded-2xl p-5">
-              <p className="text-xs tracking-[0.18em] text-mint uppercase">Operating loop</p>
+
+          <div className="mt-12 max-w-2xl">
+            <div className="glass-panel interactive-card rounded-2xl p-5">
+              <p className="text-xs font-semibold tracking-[0.18em] text-mint uppercase">Operating loop</p>
               <ol className="mt-4 space-y-3">
                 {processSteps.map((step) => (
                   <li key={step.n} className="flex gap-3 border-b border-white/8 pb-3 last:border-0 last:pb-0">
                     <span className="font-heading text-mint">{step.n}</span>
                     <div>
                       <p className="text-sm font-medium">{step.title}</p>
-                      <p className="text-sm text-white/60">{step.body}</p>
+                      <p className="text-sm leading-[1.6] text-[#d1d5db]">{step.body}</p>
                     </div>
                   </li>
                 ))}
@@ -77,24 +78,24 @@ export default function HomePage() {
       <ComplianceBadges />
       <MetricsBar />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <section className="page-section py-12">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <p className="text-xs tracking-[0.2em] text-mint uppercase">Services</p>
+            <p className="text-xs font-semibold tracking-[0.2em] text-mint uppercase">Services</p>
             <h2 className="mt-2 text-3xl sm:text-4xl">The cycle, owned in slices or entire.</h2>
           </div>
-          <Link href="/services" className="hidden text-sm text-mint underline-offset-4 hover:underline sm:inline">
+          <Link href="/services" className="hidden text-sm text-cyan underline-offset-4 hover:underline sm:inline">
             All services
           </Link>
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.slice(0, 6).map((service) => (
             <Link key={service.slug} href={`/services/${service.slug}`}>
-              <Card className="h-full transition-colors hover:border-emerald-400/30">
+              <Card className="interactive-card h-full">
                 <CardHeader>
                   <Badge variant="secondary">{service.cycle}</Badge>
                   <CardTitle className="mt-2 text-lg">{service.name}</CardTitle>
-                  <CardDescription className="text-sm leading-6">{service.summary}</CardDescription>
+                  <CardDescription className="text-sm leading-[1.6] text-[#d1d5db]">{service.summary}</CardDescription>
                 </CardHeader>
               </Card>
             </Link>
@@ -102,31 +103,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-navy py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <p className="text-xs tracking-[0.2em] text-mint uppercase">Why 360VERTEXAI</p>
+      <section className="bg-[#121212] py-12">
+        <div className="page-section">
+          <p className="text-xs font-semibold tracking-[0.2em] text-mint uppercase">Why 360VERTEXAI</p>
           <h2 className="mt-2 max-w-2xl text-3xl sm:text-4xl">AI is a reviewer. Your cash still needs operators.</h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
             {differentiators.map((item) => (
-              <div key={item.title} className="glass-panel rounded-xl p-5">
+              <div key={item.title} className="glass-panel interactive-card rounded-xl p-5">
                 <h3 className="text-xl">{item.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-200">{item.body}</p>
+                <p className="mt-2 text-sm leading-[1.6] text-[#d1d5db]">{item.body}</p>
               </div>
             ))}
           </div>
-          <Link
-            href="/why"
-            className="mt-8 inline-flex text-sm text-mint underline-offset-4 hover:underline"
-          >
+          <Link href="/why" className="mt-6 inline-flex text-sm text-cyan underline-offset-4 hover:underline">
             Why practices choose 360VERTEXAI
           </Link>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <p className="text-xs tracking-[0.2em] text-mint uppercase">Specialties</p>
+      <section className="page-section py-12">
+        <p className="text-xs font-semibold tracking-[0.2em] text-mint uppercase">Specialties</p>
         <h2 className="mt-2 text-3xl sm:text-4xl">Configured for how you actually bill.</h2>
-        <p className="mt-3 max-w-[65ch] text-sm text-slate-200">
+        <p className="mt-3 max-w-[65ch] text-sm leading-[1.6] text-[#d1d5db]">
           Specialty-tailored coding precision for all major commercial, Medicare, Medicaid, and
           regional insurance payers.
         </p>
@@ -135,7 +133,7 @@ export default function HomePage() {
             <Link
               key={specialty.slug}
               href={`/specialties/${specialty.slug}`}
-              className="rounded-full border border-white/8 bg-card px-4 py-2 text-sm hover:border-mint/40"
+              className="rounded-full border border-white/15 bg-card px-4 py-2 text-sm hover:border-cyan/40"
             >
               {specialty.name}
             </Link>
@@ -143,12 +141,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-navy/50">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
+      <section className="border-t border-white/10 bg-[#121212]/80">
+        <div className="page-section grid gap-8 py-12 lg:grid-cols-2">
           <div>
-            <p className="text-xs tracking-[0.2em] text-mint uppercase">Questions</p>
+            <p className="text-xs font-semibold tracking-[0.2em] text-mint uppercase">Questions</p>
             <h2 className="mt-2 text-3xl">Straight answers before a BAA.</h2>
-            <p className="mt-3 text-slate-200">
+            <p className="mt-3 leading-[1.6] text-[#d1d5db]">
               Onboarding, EHR connectivity, and how AI stays in review. System access and claim
               samples happen after legal and security—not through this form.
             </p>
@@ -157,7 +155,7 @@ export default function HomePage() {
             {faqs.map((faq) => (
               <AccordionItem key={faq.question} value={faq.question}>
                 <AccordionTrigger className="text-base">{faq.question}</AccordionTrigger>
-                <AccordionContent className="text-slate-200 leading-6">{faq.answer}</AccordionContent>
+                <AccordionContent className="leading-[1.6] text-[#d1d5db]">{faq.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

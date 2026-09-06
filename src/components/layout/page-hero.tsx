@@ -23,16 +23,16 @@ export function PageHero({
       <div
         className={
           compact
-            ? "relative mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10"
-            : "relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14"
+            ? "relative mx-auto max-w-6xl scroll-anchor px-4 py-8 sm:px-6 sm:py-10"
+            : "relative mx-auto max-w-6xl scroll-anchor px-4 py-12 sm:px-6 sm:py-14"
         }
       >
         {crumbs ? (
-          <p className="mb-3 text-xs tracking-[0.14em] text-slate-300 uppercase">
+          <p className="mb-3 text-xs tracking-[0.14em] text-[#d1d5db] uppercase">
             {crumbs.map((crumb, i) => (
               <span key={crumb.href}>
                 {i > 0 ? " / " : null}
-                <Link href={crumb.href} className="text-emerald-400 hover:text-emerald-300">
+                <Link href={crumb.href} className="text-cyan hover:text-mint">
                   {crumb.label}
                 </Link>
               </span>
@@ -44,7 +44,7 @@ export function PageHero({
         ) : null}
         <h1 className="max-w-3xl text-4xl leading-[1.1] text-balance sm:text-5xl">{title}</h1>
         {lede ? (
-          <p className="mt-3 max-w-[65ch] text-base leading-7 text-slate-200 sm:text-lg">{lede}</p>
+          <p className="mt-3 max-w-[65ch] text-base leading-[1.6] text-[#e0e0e0] sm:text-lg">{lede}</p>
         ) : null}
         {children}
       </div>
@@ -54,14 +54,13 @@ export function PageHero({
 
 export function CtaBand() {
   return (
-    <section className="border-t border-white/10 bg-navy" id="assessment">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-12">
+    <section className="scroll-anchor border-t border-white/10 bg-[#121212]" id="assessment">
+      <div className="page-section grid gap-8 py-10 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <p className="text-xs font-semibold tracking-[0.2em] text-mint uppercase">Revenue assessment</p>
           <h2 className="mt-2 text-2xl sm:text-3xl">Tell us the practice. Keep patients off this form.</h2>
-          <p className="mt-3 max-w-[65ch] text-sm leading-6 text-slate-200">
-            Specialty, monthly visit volume, and EHR. Leave patient data out until we have a BAA. The
-            header CTA stays available on every page.
+          <p className="mt-3 max-w-[65ch] text-sm leading-[1.6] text-[#d1d5db]">
+            Three quick steps—specialty, volume, and EHR. Leave patient data out until we have a BAA.
           </p>
         </div>
         <div className="lg:col-span-8">

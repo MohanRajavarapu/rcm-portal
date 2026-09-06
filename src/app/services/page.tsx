@@ -33,10 +33,10 @@ export default function ServicesPage() {
         lede="Start with denials or aged A/R if that is where cash is stuck. Expand when the cadence is proven."
       />
       <nav
-        className="sticky top-[5.25rem] z-30 border-b border-white/10 bg-[#061d21]/95 backdrop-blur-md"
+        className="sticky top-[var(--header-height)] z-[900] border-b border-white/10 bg-[rgba(11,12,16,0.92)] backdrop-blur-[12px]"
         aria-label="Service phases"
       >
-        <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-3 sm:px-6">
+        <div className="page-section flex gap-2 overflow-x-auto py-3">
           {phases.map((phase) => (
             <a
               key={phase.id}
@@ -48,9 +48,9 @@ export default function ServicesPage() {
           ))}
         </div>
       </nav>
-      <section className="mx-auto max-w-6xl space-y-10 px-4 py-10 sm:px-6">
+      <section className="page-section space-y-10 py-8">
         {(Object.keys(servicesByCycle) as Array<keyof typeof servicesByCycle>).map((cycle) => (
-          <div key={cycle} id={cycleAnchors[cycle]} className="scroll-mt-36">
+          <div key={cycle} id={cycleAnchors[cycle]} className="scroll-anchor">
             <h2 className="text-2xl">
               <span className="text-xs font-semibold tracking-[0.2em] text-mint uppercase">{cycle}</span>
               <span className="mt-1 block">{cycle}-cycle</span>
@@ -58,12 +58,12 @@ export default function ServicesPage() {
             <div className="mt-4 grid gap-4 md:grid-cols-2">
               {servicesByCycle[cycle].map((service) => (
                 <Link key={service.slug} href={`/services/${service.slug}`}>
-                  <Card className="h-full hover:border-emerald-400/30">
+                  <Card className="interactive-card h-full">
                     <CardHeader>
                       <Badge variant="secondary">{service.cycle}</Badge>
                       <CardTitle className="mt-2 text-xl">{service.name}</CardTitle>
-                      <CardDescription className="leading-6 text-slate-200">{service.summary}</CardDescription>
-                      <p className="pt-2 text-sm text-emerald-400">{service.outcome}</p>
+                      <CardDescription className="leading-[1.6] text-[#d1d5db]">{service.summary}</CardDescription>
+                      <p className="pt-2 text-sm text-cyan">{service.outcome}</p>
                     </CardHeader>
                   </Card>
                 </Link>
@@ -71,7 +71,7 @@ export default function ServicesPage() {
             </div>
           </div>
         ))}
-        <p className="text-sm text-slate-300">{services.length} services in the public catalog.</p>
+        <p className="text-sm text-[#d1d5db]">{services.length} services in the public catalog.</p>
       </section>
       <CtaBand />
     </>

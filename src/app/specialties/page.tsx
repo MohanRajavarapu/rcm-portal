@@ -16,7 +16,7 @@ export default function SpecialtiesPage() {
         title="Queues, edits, and coding rules that match the clinic—not a generic mill."
         lede="Specialty-tailored coding precision for all major commercial, Medicare, Medicaid, and regional insurance payers."
       />
-      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+      <section className="page-section scroll-anchor py-8">
         <SpecialtiesCatalog />
       </section>
       <CtaBand />

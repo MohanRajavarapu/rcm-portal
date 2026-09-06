@@ -19,7 +19,7 @@ export function Logo({
     >
       <span
         className={cn(
-          "overflow-hidden rounded-md bg-[#061d21]",
+          "overflow-hidden rounded-md bg-[#0b0c10]",
           light ? "ring-1 ring-white/10" : "ring-1 ring-white/8",
         )}
       >
@@ -30,9 +30,9 @@ export function Logo({
           height={667}
           className={cn(
             "w-auto object-contain object-center",
-            size === "footer" ? "h-16 sm:h-[4.75rem]" : "h-12 sm:h-14",
+            size === "footer" ? "h-7 sm:h-8" : "h-11 sm:h-[44px]",
           )}
-          priority
+          priority={size === "header"}
         />
       </span>
     </Link>
