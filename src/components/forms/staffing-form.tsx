@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { withBasePath } from "@/lib/base-path";
-import { noPhiCopy } from "@/lib/phi";
+import { noPhiCopy, noPhiFieldHint } from "@/lib/phi";
 import { engagementModels, staffingRoles } from "@/content/staffing";
 
 export function StaffingForm() {
@@ -117,8 +117,9 @@ export function StaffingForm() {
           name="message"
           required
           rows={5}
-          placeholder={`Headcount, specialty, systems, start date. ${noPhiCopy}`}
+          placeholder={noPhiFieldHint}
         />
+        <p className="caption">{noPhiFieldHint}</p>
       </div>
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
       <Button type="submit" disabled={status === "loading"} variant="outline" className="h-11 px-5">

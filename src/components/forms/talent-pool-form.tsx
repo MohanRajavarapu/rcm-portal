@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { withBasePath } from "@/lib/base-path";
-import { noPhiCopy } from "@/lib/phi";
+import { noPhiCopy, noPhiFieldHint } from "@/lib/phi";
 import { staffingRoles } from "@/content/staffing";
 
 export function TalentPoolForm() {
@@ -98,14 +98,17 @@ export function TalentPoolForm() {
         <div className="grid gap-1.5">
           <Label htmlFor="tp-years">Years of experience</Label>
           <Input id="tp-years" name="yearsExperience" className="h-11" placeholder="e.g. 6" />
+          <p className="caption">{noPhiFieldHint}</p>
         </div>
         <div className="grid gap-1.5">
           <Label htmlFor="tp-avail">Availability</Label>
           <Input id="tp-avail" name="availability" className="h-11" placeholder="e.g. 2 weeks notice" />
+          <p className="caption">{noPhiFieldHint}</p>
         </div>
         <div className="grid gap-1.5 sm:col-span-2">
           <Label htmlFor="tp-certs">Certifications</Label>
-          <Input id="tp-certs" name="certifications" className="h-11" placeholder="CPC, CCS, none yet…" />
+          <Input id="tp-certs" name="certifications" className="h-11" placeholder={noPhiFieldHint} />
+          <p className="caption">{noPhiFieldHint}</p>
         </div>
         <div className="grid gap-1.5 sm:col-span-2">
           <Label htmlFor="tp-auth">Work authorization status</Label>
@@ -131,7 +134,8 @@ export function TalentPoolForm() {
       </div>
       <div className="grid gap-1.5">
         <Label htmlFor="tp-extra">Additional notes</Label>
-        <Textarea id="tp-extra" name="extra" rows={4} placeholder={noPhiCopy} />
+        <Textarea id="tp-extra" name="extra" rows={4} placeholder={noPhiFieldHint} />
+        <p className="caption">{noPhiFieldHint}</p>
       </div>
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
       <Button type="submit" disabled={status === "loading"} variant="outline" className="h-11 px-5">

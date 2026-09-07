@@ -57,7 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${sans.variable} ${display.variable} ${mono.variable} dark h-full`}
+      className={`${sans.variable} ${display.variable} ${mono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col">
         <script
@@ -65,7 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <SiteHeader />
-        <main className="content-safe flex-1">{children}</main>
+        <main className="flex-1">{children}</main>
         <SiteFooter />
       </body>
     </html>

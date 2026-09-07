@@ -1,20 +1,11 @@
 import Link from "next/link";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { FileCheck, ShieldCheck, BadgeCheck } from "lucide-react";
 import { CtaBand } from "@/components/layout/page-hero";
-import { ComplianceBadges } from "@/components/trust/compliance-badges";
-import { EhrBanner } from "@/components/trust/ehr-banner";
-import { MetricsBar } from "@/components/trust/metrics-bar";
-import { company, differentiators } from "@/content/company";
-import { faqs, processSteps } from "@/content/faqs";
-import { services } from "@/content/services";
+import { PillarCard } from "@/components/what-we-do/pillar-card";
+import { pillars } from "@/content/pillars";
+import { company } from "@/content/company";
 import { specialties } from "@/content/specialties";
+import { performanceStats } from "@/content/trust";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
@@ -24,186 +15,160 @@ export const metadata = pageMeta({
   path: "/",
 });
 
+const trustItems = [
+  { icon: ShieldCheck, label: "HIPAA Compliant" },
+  { icon: FileCheck, label: "BAA Ready" },
+  { icon: BadgeCheck, label: "SOC 2 Type II" },
+] as const;
+
+const cyclePreview = [
+  { cycle: "Front", tease: "Eligibility and prior auth before the visit." },
+  { cycle: "Mid", tease: "Coding and charge capture with human attestation." },
+  { cycle: "Back", tease: "Claims, denials, and A/R as one queue." },
+] as const;
+
 export default function HomePage() {
   return (
     <>
       <section className="hero-wash">
-        <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
+        <div className="page-section section-block">
           <div className="max-w-3xl">
             <p className="eyebrow-label">{company.legalName}</p>
-            <h1 className="mt-4 text-4xl leading-[1.08] text-balance sm:text-6xl">
+            <h1 className="mt-4 text-4xl leading-[1.08] text-balance sm:text-5xl lg:text-6xl">
               Recover the revenue the visit already earned.
             </h1>
-            <p className="mt-4 max-w-[65ch] text-lg leading-[1.6] text-fg-muted">
+            <p className="mt-4 max-w-[65ch] text-lg leading-[1.65]">
               End-to-end US healthcare RCM—eligibility through posting—run with certified operators
-              and AI that flags risk instead of inventing codes. Built for physician groups, ASCs,
-              and specialty practices.
+              and AI that flags risk instead of inventing codes.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/contact/rcm" className="btn-primary h-11 px-6 text-sm">
-                Talk to an Expert
-              </Link>
-              <Link href="/services" className="btn-secondary h-11 px-6 text-sm">
-                View the cycle
+            <div className="mt-8">
+              <Link href="/what-we-do" className="btn-secondary h-11 px-6 text-sm">
+                See what we do
               </Link>
             </div>
             <p className="caption mt-6">
               {company.email} · {company.phoneDisplay} · No PHI on this website
             </p>
           </div>
-
-          <div className="mt-12 max-w-2xl">
-            <div className="surface-card bg-surface-2 p-5">
-              <p className="eyebrow-label">Operating loop</p>
-              <ol className="mt-4 space-y-3">
-                {processSteps.map((step) => (
-                  <li
-                    key={step.n}
-                    className="flex gap-3 border-b border-[var(--border-subtle)] pb-3 last:border-0 last:pb-0"
-                  >
-                    <span className="font-heading text-sm font-semibold text-fg-subtle">{step.n}</span>
-                    <div>
-                      <p className="text-sm font-medium text-fg">{step.title}</p>
-                      <p className="text-sm leading-[1.6] text-fg-muted">{step.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
         </div>
       </section>
 
-      <EhrBanner />
-      <ComplianceBadges />
-      <MetricsBar line="rcm" />
-
-      <section className="section-alt border-y border-[var(--border-subtle)]">
-        <div className="page-section flex flex-col items-start justify-between gap-4 py-10 sm:flex-row sm:items-center">
-          <div>
-            <p className="eyebrow-label">Staffing & workforce solutions</p>
-            <h2 className="mt-2 text-2xl sm:text-3xl">Need to scale your team?</h2>
-            <p className="mt-2 max-w-[60ch] text-sm text-fg-muted">
-              Contract staffing, EOR, pods, and direct hire — a separate buyer path from RCM
-              operations. Not mixed into the hero above.
-            </p>
-          </div>
-          <Link href="/staffing" className="btn-secondary h-11 px-6 text-sm">
-            See Staffing & Workforce Solutions
-          </Link>
-        </div>
-      </section>
-
-      <section className="bg-surface-0 py-12">
-        <div className="page-section">
-          <p className="eyebrow-label">Service pillars</p>
-          <h2 className="mt-2 text-3xl sm:text-4xl">Two offerings. Two doors.</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <Link href="/services" className="surface-card p-6 hover:bg-surface-3">
-              <p className="eyebrow-label">For healthcare providers</p>
-              <h3 className="mt-2 text-2xl">Core Operations & AI Automation</h3>
-              <p className="mt-2 text-sm leading-[1.6] text-fg-muted">
-                Eligibility through posting. BAA, attested AI, and RCM operating metrics.
-              </p>
-            </Link>
-            <Link href="/staffing" className="surface-card p-6 hover:bg-surface-3">
-              <p className="eyebrow-label">For workforce buyers</p>
-              <h3 className="mt-2 text-2xl">Staffing & Workforce Solutions</h3>
-              <p className="mt-2 text-sm leading-[1.6] text-fg-muted">
-                Who employs whom, time-to-fill, and compliance — not a slice of the RCM catalog.
-              </p>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-surface-0 py-12">
-        <div className="page-section">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <p className="eyebrow-label">RCM services</p>
-              <h2 className="mt-2 text-3xl sm:text-4xl">The cycle, owned in slices or entire.</h2>
-            </div>
-            <Link href="/services" className="link-quiet hidden text-sm underline-offset-4 hover:underline sm:inline">
-              All services
-            </Link>
-          </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {services.slice(0, 6).map((service) => (
-              <Link key={service.slug} href={`/services/${service.slug}`}>
-                <Card className="interactive-card h-full">
-                  <CardHeader>
-                    <Badge variant="secondary">{service.cycle}</Badge>
-                    <CardTitle className="mt-2 text-lg text-fg">{service.name}</CardTitle>
-                    <CardDescription>{service.summary}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-alt py-12">
-        <div className="page-section">
-          <p className="eyebrow-label">Why 360VERTEXAI</p>
-          <h2 className="mt-2 max-w-2xl text-3xl sm:text-4xl">AI is a reviewer. Your cash still needs operators.</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {differentiators.map((item) => (
-              <div key={item.title} className="surface-card p-5">
-                <h3 className="text-xl">{item.title}</h3>
-                <p className="mt-2 text-sm leading-[1.6] text-fg-muted">{item.body}</p>
+      <section className="border-b border-slate-200 bg-white" aria-label="Operating targets">
+        <div className="page-section py-10 md:py-12">
+          <div className="grid gap-4 sm:grid-cols-3">
+            {performanceStats.map((stat) => (
+              <div key={stat.label} className="surface-card p-6 text-center sm:text-left">
+                <p className="stat-number text-3xl sm:text-4xl">{stat.value}</p>
+                <p className="mt-2 text-sm font-semibold text-fg">{stat.label}</p>
               </div>
             ))}
           </div>
-          <Link href="/why" className="link-quiet mt-6 inline-flex text-sm underline-offset-4 hover:underline">
-            Why practices choose 360VERTEXAI
+        </div>
+      </section>
+
+      <section className="section-alt border-b border-slate-200" aria-label="Trust and compliance">
+        <div className="page-section flex flex-col items-center gap-6 py-8 md:flex-row md:justify-center md:gap-10">
+          {trustItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <p key={item.label} className="flex items-center gap-2 text-sm font-semibold text-fg">
+                <span className="grid size-9 place-items-center rounded-lg bg-[#f0fdfa] text-[#0f766e]">
+                  <Icon className="size-4" aria-hidden />
+                </span>
+                {item.label}
+              </p>
+            );
+          })}
+          <Link
+            href="/about/trust-security"
+            className="text-sm font-semibold text-[#0f766e] underline-offset-4 hover:underline"
+          >
+            Trust &amp; Security →
           </Link>
         </div>
       </section>
 
-      <section className="bg-surface-0 py-12">
+      <section className="bg-white section-block">
         <div className="page-section">
-          <p className="eyebrow-label">Specialties</p>
-          <h2 className="mt-2 text-3xl sm:text-4xl">Configured for how you actually bill.</h2>
-          <p className="mt-3 max-w-[65ch] text-sm leading-[1.6] text-fg-muted">
-            Specialty-tailored coding precision for all major commercial, Medicare, Medicaid, and
-            regional insurance payers.
+          <p className="eyebrow-label">What we do</p>
+          <h2 className="mt-2 text-3xl sm:text-4xl">Two offerings. Two doors.</h2>
+          <p className="mt-3 max-w-[65ch] text-base leading-7">
+            Individual services and engagement models live one level down — not on this page.
           </p>
-          <div className="mt-8 flex flex-wrap gap-2">
-            {specialties.map((specialty) => (
-              <Link
-                key={specialty.slug}
-                href={`/specialties/${specialty.slug}`}
-                className="rounded-full border border-[var(--border-default)] bg-surface-2 px-4 py-2 text-sm text-fg-muted hover:bg-surface-3 hover:text-fg"
-              >
-                {specialty.name}
-              </Link>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {pillars.map((pillar) => (
+              <PillarCard
+                key={pillar.slug}
+                title={pillar.title}
+                summary={pillar.summary}
+                href={pillar.href}
+                ctaLabel={pillar.ctaLabel}
+                icon={pillar.icon}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-alt border-t border-[var(--border-subtle)]">
-        <div className="page-section grid gap-8 py-12 lg:grid-cols-2">
-          <div>
-            <p className="eyebrow-label">RCM questions</p>
-            <h2 className="mt-2 text-3xl">Straight answers before a BAA.</h2>
-            <p className="mt-3 leading-[1.6] text-fg-muted">
-              Onboarding, EHR connectivity, and how AI stays in review. System access and claim
-              samples happen after legal and security—not through this form.
-            </p>
-          </div>
-          <Accordion>
-            {faqs.map((faq) => (
-              <AccordionItem key={faq.question} value={faq.question}>
-                <AccordionTrigger className="text-base text-fg">{faq.question}</AccordionTrigger>
-                <AccordionContent className="leading-[1.6] text-fg-muted">{faq.answer}</AccordionContent>
-              </AccordionItem>
+      <section className="section-alt section-block border-y border-slate-200">
+        <div className="page-section">
+          <p className="eyebrow-label">The cycle</p>
+          <h2 className="mt-2 text-3xl">Slices or the full loop.</h2>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+            {cyclePreview.map((item) => (
+              <li key={item.cycle} className="surface-card p-6">
+                <p className="eyebrow-label">{item.cycle}-cycle</p>
+                <p className="mt-2 text-sm leading-6">{item.tease}</p>
+              </li>
             ))}
-          </Accordion>
+          </ul>
+          <Link
+            href="/what-we-do/rcm"
+            className="mt-8 inline-flex text-sm font-semibold text-[#0f766e] underline-offset-4 hover:underline"
+          >
+            Explore Services →
+          </Link>
         </div>
       </section>
+
+      <section className="bg-white section-block">
+        <div className="page-section grid gap-12 lg:grid-cols-2">
+          <div>
+            <p className="eyebrow-label">Why 360VERTEXAI</p>
+            <h2 className="mt-2 text-3xl">AI is a reviewer. Cash still needs operators.</h2>
+            <p className="mt-3 max-w-[60ch] text-base leading-7">
+              Models flag eligibility gaps, coding variance, and denials. Certified staff attest
+              codes and contact payers.
+            </p>
+            <Link
+              href="/why"
+              className="mt-4 inline-flex text-sm font-semibold text-[#0f766e] underline-offset-4 hover:underline"
+            >
+              Why practices choose 360VERTEXAI →
+            </Link>
+          </div>
+          <div>
+            <p className="eyebrow-label">Specialties</p>
+            <h2 className="mt-2 text-3xl">Configured for how you bill.</h2>
+            <ul className="mt-4 space-y-2 text-base">
+              {specialties.slice(0, 4).map((specialty) => (
+                <li key={specialty.slug}>
+                  <Link href={`/specialties/${specialty.slug}`} className="link-quiet">
+                    {specialty.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/specialties"
+              className="mt-4 inline-flex text-sm font-semibold text-[#0f766e] underline-offset-4 hover:underline"
+            >
+              View All Specialties →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <CtaBand />
     </>
   );

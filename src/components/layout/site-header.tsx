@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
-import { NavDropdown } from "@/components/layout/nav-dropdown";
+import { TalkToExpertCta } from "@/components/cta/talk-to-an-expert";
 import { buttonVariants } from "@/components/ui/button";
-import { mobileNav, primaryNav } from "@/content/navigation";
+import { primaryNav } from "@/content/navigation";
 import { company } from "@/content/company";
 import { cn } from "@/lib/utils";
 
@@ -26,18 +26,19 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="mx-auto flex h-[var(--header-height)] max-w-[90rem] items-center justify-between gap-3 px-4 sm:px-6">
         <Logo />
-        <nav className="hidden items-start gap-2 xl:flex" aria-label="Primary">
-          {primaryNav.map((item) => (
-            <NavDropdown key={item.href} item={item} />
-          ))}
-        </nav>
-        <div className="flex shrink-0 items-center gap-2">
-          <Link href="/contact/rcm" className="btn-primary hidden h-10 px-3 text-sm xl:inline-flex">
-            Talk to an Expert
-          </Link>
-          <Link href="/contact/staffing" className="btn-secondary hidden h-10 px-3 text-sm xl:inline-flex">
-            Request Staffing
-          </Link>
+        <div className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3">
+          <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Primary">
+            {primaryNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="link-quiet rounded-lg px-2.5 py-2 text-sm font-medium"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <TalkToExpertCta className="h-10 px-3 text-sm" />
           <button
             type="button"
             className={cn(buttonVariants({ variant: "outline", size: "icon" }), "xl:hidden")}
@@ -69,37 +70,23 @@ export function SiteHeader() {
                 <X className="size-4" />
               </button>
             </div>
-            <nav className="mt-6 flex flex-col gap-6" aria-label="Mobile">
-              {mobileNav.map((section) => (
-                <div key={section.heading}>
-                  <p className="eyebrow-label px-3">{section.heading}</p>
-                  <p className="caption px-3 pt-1">{section.hint}</p>
-                  <div className="mt-2 flex flex-col gap-1">
-                    {section.links.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="link-quiet rounded-lg px-3 py-2.5 text-base hover:bg-surface-3"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+            <nav className="mt-6 flex flex-col gap-1" aria-label="Mobile">
+              {primaryNav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="link-quiet rounded-lg px-3 py-2.5 text-base hover:bg-surface-3"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
               ))}
-              <Link href="/contact/rcm" className="btn-primary mt-2 h-11 justify-center px-5 text-sm" onClick={() => setMenuOpen(false)}>
-                Talk to an Expert
-              </Link>
-              <Link href="/contact/staffing" className="btn-secondary h-11 justify-center px-5 text-sm" onClick={() => setMenuOpen(false)}>
-                Request Staffing
-              </Link>
-              <p className="caption mt-2 px-3">
-                {company.phoneDisplay}
-                <br />
-                {company.email}
-              </p>
             </nav>
+            <p className="caption mt-6 px-3">
+              {company.phoneDisplay}
+              <br />
+              {company.email}
+            </p>
           </div>
         </div>
       ) : null}

@@ -6,3 +6,5 @@ export function containsRestrictedCandidateText(value: string) {
 
 export const noPhiCopy =
   "Do not include patient information, SSN, date of birth, or personal health details.";
+
+export const noPhiFieldHint = "Do not include patient information or personal health details.";

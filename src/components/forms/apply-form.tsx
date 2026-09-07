@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { noPhiCopy } from "@/lib/phi";
+import { noPhiCopy, noPhiFieldHint } from "@/lib/phi";
 import type { Job } from "@/content/jobs";
 import { withBasePath } from "@/lib/base-path";
 
@@ -96,8 +96,9 @@ export function ApplyForm({ jobs, defaultJobId }: { jobs: Job[]; defaultJobId?: 
           name="note"
           required
           rows={5}
-          placeholder={`US RCM systems, specialties, coding credentials. ${noPhiCopy}`}
+          placeholder={noPhiFieldHint}
         />
+        <p className="caption">{noPhiFieldHint}</p>
       </div>
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
       <Button type="submit" disabled={status === "loading"} className="h-11 px-5">

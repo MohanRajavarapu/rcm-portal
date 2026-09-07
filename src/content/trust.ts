@@ -29,17 +29,17 @@ export const complianceBadges = [
 export const performanceStats = [
   {
     value: "98%+",
-    label: "First-pass clean claim rate",
+    label: "Clean claim rate",
     hint: "Target operating standard after parallel-run, by specialty mix.",
   },
   {
     value: "<30 Days",
-    label: "Target days in A/R",
+    label: "Days in A/R",
     hint: "Worked inventory with payer-specific follow-up SLAs.",
   },
   {
     value: "35% Avg",
-    label: "Reduction in cost-to-collect",
+    label: "Cost reduction",
     hint: "Versus fragmented vendor stacks on comparable visit volume.",
   },
 ] as const;

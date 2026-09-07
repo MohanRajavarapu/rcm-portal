@@ -11,7 +11,7 @@ export type LeadInput = {
   specialty?: string;
   interest?: string;
   message: string;
-  source: "contact" | "assessment" | "staffing";
+  source: "contact" | "assessment" | "staffing" | "general";
 };
 
 export type Lead = LeadInput & {
@@ -41,7 +41,13 @@ export function validateLead(input: Partial<LeadInput>): {
     };
   }
   const source =
-    input.source === "assessment" ? "assessment" : input.source === "staffing" ? "staffing" : "contact";
+    input.source === "assessment"
+      ? "assessment"
+      : input.source === "staffing"
+        ? "staffing"
+        : input.source === "general"
+          ? "general"
+          : "contact";
   return {
     ok: true,
     value: {

@@ -1,53 +1,12 @@
-import Link from "next/link";
-import { PageHero } from "@/components/layout/page-hero";
-import { company } from "@/content/company";
+import { LegacyRedirect } from "@/components/layout/legacy-redirect";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   title: "HIPAA & BAA",
-  description: "How 360VERTEXAI treats PHI and Business Associate Agreements for RCM operations.",
-  path: "/hipaa",
+  description: "HIPAA copy now lives on Trust & Security.",
+  path: "/about/trust-security",
 });
 
-export default function HipaaPage() {
-  return (
-    <>
-      <PageHero
-        eyebrow="Compliance"
-        title="HIPAA, BAAs, and why this website refuses patient data."
-        lede="US healthcare RCM requires a Business Associate Agreement before PHI or EHR access. The public site is built to make that boundary obvious."
-      />
-      <article className="mx-auto max-w-3xl space-y-5 px-4 py-10 text-[1.02rem] leading-7 text-fg-muted sm:px-6">
-        <p>
-          {company.legalName} will execute a Business Associate Agreement with covered entities and
-          business associates before receiving PHI, accessing a practice management system, or
-          connecting to a clearinghouse on your behalf.
-        </p>
-        <p>
-          Workforce members handling production work are trained on the minimum-necessary standard,
-          access logging, and prohibition on using personal email or this website for claims files.
-        </p>
-        <p>
-          Public forms run a conservative check for PHI-like language and will reject the submission.
-          That check is not a substitute for your own discipline. When in doubt, omit the detail and
-          wait for a secure channel.
-        </p>
-        <p>
-          Request a BAA conversation from{" "}
-          <Link href="/contact/rcm" className="link-quiet underline-offset-4 hover:underline">
-            Talk to an Expert
-          </Link>{" "}
-          or {company.email} / {company.salesEmail}. Do not attach a census
-          or 837 file to that first message.
-        </p>
-        <p>
-          Full Trust & Security (HIPAA, SOC 2, candidate/HR data, residency):{" "}
-          <Link href="/trust" className="link-quiet underline-offset-4 hover:underline">
-            /trust
-          </Link>
-          .
-        </p>
-      </article>
-    </>
-  );
+export default function Page() {
+  return <LegacyRedirect to="/about/trust-security#hipaa" />;
 }

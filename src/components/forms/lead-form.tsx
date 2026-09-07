@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { withBasePath } from "@/lib/base-path";
+import { noPhiFieldHint } from "@/lib/phi";
 import { services } from "@/content/services";
 import { specialties } from "@/content/specialties";
 import { cn } from "@/lib/utils";
@@ -32,7 +33,11 @@ const initial: FormData = {
   message: "",
 };
 
-export function LeadForm({ source = "contact" }: { source?: "contact" | "assessment" }) {
+export function LeadForm({
+  source = "contact",
+}: {
+  source?: "contact" | "assessment" | "general";
+}) {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormData>(initial);
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
@@ -214,8 +219,9 @@ export function LeadForm({ source = "contact" }: { source?: "contact" | "assessm
               rows={5}
               value={form.message}
               onChange={(e) => update("message", e.target.value)}
-              placeholder="Example: cardiology group, ~4,000 encounters/month, Athena, denial mix heavy on medical necessity. No patient data."
+              placeholder={noPhiFieldHint}
             />
+            <p className="caption">{noPhiFieldHint}</p>
           </div>
           {error ? <p className="text-sm text-destructive">{error}</p> : null}
           <div className="flex flex-wrap gap-2">

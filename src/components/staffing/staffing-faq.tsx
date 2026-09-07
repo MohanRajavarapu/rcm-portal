@@ -13,7 +13,7 @@ export function StaffingFaq() {
             These answers are for workforce buyers. RCM operating FAQs live on the provider side of
             the site.
           </p>
-          <Link href="/staffing/compliance" className="link-quiet mt-4 inline-flex text-sm underline-offset-4 hover:underline">
+          <Link href="/about/trust-security#staffing-compliance" className="link-quiet mt-4 inline-flex text-sm underline-offset-4 hover:underline">
             Compliance & risk details
           </Link>
         </div>

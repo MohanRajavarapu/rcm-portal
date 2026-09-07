@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { TalkToExpertCta } from "@/components/cta/talk-to-an-expert";
 
 export function PageHero({
   eyebrow,
@@ -48,20 +49,30 @@ export function PageHero({
   );
 }
 
-export function CtaBand() {
+export function CtaBand({
+  href,
+  eyebrow = "Inquiry",
+  lede = "Tell us the practice or the workforce need. No PHI on this website.",
+}: {
+  href?: "/contact" | "/contact/rcm" | "/contact/staffing" | "/contact/general";
+  eyebrow?: string;
+  lede?: string;
+}) {
   return (
-    <section className="scroll-anchor section-alt border-t border-[var(--border-subtle)]" id="assessment">
-      <div className="page-section flex flex-col items-start justify-between gap-4 py-10 sm:flex-row sm:items-center">
+    <section className="scroll-anchor border-t border-slate-200 bg-[#f8fafc]" id="assessment">
+      <div className="page-section flex flex-col items-start justify-between gap-4 py-16 md:py-24 sm:flex-row sm:items-center">
         <div>
-          <p className="eyebrow-label">RCM inquiry</p>
+          <p className="eyebrow-label">{eyebrow}</p>
           <h2 className="mt-2 text-2xl sm:text-3xl">Talk to an Expert</h2>
-          <p className="mt-2 max-w-[60ch] text-sm text-fg-muted">
-            Practice, specialty, volume, and EHR only. BAA before PHI or system access.
-          </p>
+          <p className="mt-2 max-w-[60ch] text-sm text-fg-muted">{lede}</p>
         </div>
-        <Link href="/contact/rcm" className="btn-primary h-11 px-6 text-sm">
-          Talk to an Expert
-        </Link>
+        {href ? (
+          <Link href={href} className="btn-primary h-11 px-6 text-sm">
+            Talk to an Expert
+          </Link>
+        ) : (
+          <TalkToExpertCta className="h-11 px-6 text-sm" />
+        )}
       </div>
     </section>
   );

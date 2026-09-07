@@ -44,11 +44,11 @@ export default function ContractsPage() {
           <p className="mt-3">
             A BAA is required before PHI, EHR credentials, or claim files. It is not implied by an
             MSA or by a staffing SOW. Public website forms never receive PHI. See{" "}
-            <Link href="/hipaa" className="link-quiet underline-offset-4 hover:underline">
+            <Link href="/about/trust-security#hipaa" className="link-quiet underline-offset-4 hover:underline">
               HIPAA & BAA
             </Link>{" "}
             and{" "}
-            <Link href="/trust#hipaa" className="link-quiet underline-offset-4 hover:underline">
+            <Link href="/about/trust-security#hipaa" className="link-quiet underline-offset-4 hover:underline">
               Trust & Security
             </Link>
             .
@@ -59,12 +59,12 @@ export default function ContractsPage() {
           <p className="mt-3">
             Staff augmentation, contract-to-hire, EOR, and direct hire change who employs the worker.
             That fact is written in the staffing SOW and is summarized on{" "}
-            <Link href="/staffing/compare" className="link-quiet underline-offset-4 hover:underline">
+            <Link href="/what-we-do/staffing" className="link-quiet underline-offset-4 hover:underline">
               Compare engagement models
             </Link>
             . Classification, I-9, and insurance are described on{" "}
-            <Link href="/staffing/compliance" className="link-quiet underline-offset-4 hover:underline">
-              Compliance & Risk
+            <Link href="/about/trust-security#staffing-compliance" className="link-quiet underline-offset-4 hover:underline">
+              Trust & Security
             </Link>
             .
           </p>
