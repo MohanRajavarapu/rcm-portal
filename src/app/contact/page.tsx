@@ -1,73 +1,41 @@
-import type { Metadata } from "next";
-import { LeadForm } from "@/components/forms/lead-form";
+import Link from "next/link";
 import { PageHero } from "@/components/layout/page-hero";
-import { company } from "@/content/company";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Contact",
-  description: `Contact ${company.legalName} for a revenue assessment.`,
-};
+  description:
+    "Choose an RCM operations conversation or a staffing request. These are separate inquiry paths.",
+  path: "/contact",
+});
 
-export default function ContactPage() {
+export default function ContactChooserPage() {
   return (
     <>
       <PageHero
         eyebrow="Contact"
-        title="Tell us the practice. Keep patients off this form."
-        lede="Use company, specialty, volume, and EHR. After we reply, we execute a BAA before any PHI or system access."
+        title="Which conversation do you need?"
+        lede="RCM operations and staffing are separate books of work. Pick the path that matches the buyer problem — we do not mix them on one form."
+        crumbs={[
+          { href: "/about", label: "Company" },
+          { href: "/contact", label: "Contact" },
+        ]}
       />
-      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-12">
-        <div className="lg:col-span-5 space-y-6">
-          <div>
-            <h2 className="text-2xl">Direct</h2>
-            <p className="mt-3 text-sm leading-6 text-slate-200">
-              <span className="text-xs font-semibold tracking-[0.16em] text-mint uppercase">Legal name</span>
-              <br />
-              {company.legalName}
-            </p>
-            <p className="mt-3 text-sm leading-6 text-slate-200">
-              <span className="text-xs font-semibold tracking-[0.16em] text-mint uppercase">Contact</span>
-              <br />
-              <a className="text-emerald-400 hover:text-emerald-300" href={`mailto:${company.email}`}>
-                {company.email}
-              </a>
-            </p>
-            <p className="mt-3 text-sm leading-6 text-slate-200">
-              <span className="text-xs font-semibold tracking-[0.16em] text-mint uppercase">Sales</span>
-              <br />
-              <a className="text-emerald-400 hover:text-emerald-300" href={`mailto:${company.salesEmail}`}>
-                {company.salesEmail}
-              </a>
-            </p>
-            <p className="mt-3 text-sm leading-6 text-slate-200">
-              <span className="text-xs font-semibold tracking-[0.16em] text-mint uppercase">Careers</span>
-              <br />
-              <a className="text-emerald-400 hover:text-emerald-300" href={`mailto:${company.careersEmail}`}>
-                {company.careersEmail}
-              </a>
-            </p>
-            <p className="mt-3 text-sm leading-6 text-slate-200">
-              <span className="text-xs font-semibold tracking-[0.16em] text-mint uppercase">Mobile</span>
-              <br />
-              <a className="text-emerald-400 hover:text-emerald-300" href={`tel:${company.phoneTel}`}>
-                {company.phoneDisplay}
-              </a>
-            </p>
-            <p className="mt-3 text-sm leading-6 text-slate-200">
-              <span className="text-xs font-semibold tracking-[0.16em] text-mint uppercase">Hours</span>
-              <br />
-              {company.hours}
-            </p>
-          </div>
-          <div className="rounded-xl border border-white/10 bg-card p-5 text-sm leading-6 text-slate-200">
-            Empty state: if you are not ready to talk volume, send specialty and EHR only. We still
-            reply. Error state: if the form rejects your message, it likely saw a PHI-like phrase—remove
-            identifiers and send again.
-          </div>
-        </div>
-        <div className="lg:col-span-7">
-          <LeadForm source="assessment" />
-        </div>
+      <section className="page-section grid gap-4 py-10 md:grid-cols-2">
+        <Link href="/contact/rcm" className="surface-card p-6 hover:bg-surface-3">
+          <p className="eyebrow-label">Healthcare providers</p>
+          <h2 className="mt-2 text-2xl">Talk to an Expert</h2>
+          <p className="mt-2 text-sm text-fg-muted">
+            Eligibility through posting, AI review, BAA, and operating cadence.
+          </p>
+        </Link>
+        <Link href="/contact/staffing" className="surface-card p-6 hover:bg-surface-3">
+          <p className="eyebrow-label">Workforce buyers</p>
+          <h2 className="mt-2 text-2xl">Request Staffing</h2>
+          <p className="mt-2 text-sm text-fg-muted">
+            Staff augmentation, contract-to-hire, EOR, direct hire, and dedicated pods.
+          </p>
+        </Link>
       </section>
     </>
   );

@@ -30,7 +30,7 @@ export function NewsletterForm() {
   }
 
   if (status === "ok") {
-    return <p className="text-sm text-primary">You are on the list. No PHI, ever, in this inbox.</p>;
+    return <p className="text-sm text-fg">You are on the list. No PHI, ever, in this inbox.</p>;
   }
 
   return (
@@ -41,7 +41,7 @@ export function NewsletterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Work email"
-        className="h-10 bg-background"
+        className="h-10"
         aria-label="Email for operations notes"
       />
       <Button type="submit" disabled={status === "loading"} className="h-10 px-4">

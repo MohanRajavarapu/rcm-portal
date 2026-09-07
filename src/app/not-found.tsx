@@ -12,11 +12,11 @@ export default function NotFound() {
         lede="The cycle is still here—services, specialties, or a conversation."
       />
       <div className="mx-auto flex max-w-6xl gap-4 px-4 py-12 sm:px-6">
-        <Link href="/" className="text-primary underline-offset-4 hover:underline">
+        <Link href="/" className="link-quiet underline-offset-4 hover:underline">
           Home
         </Link>
-        <Link href="/contact" className="text-primary underline-offset-4 hover:underline">
-          Contact
+        <Link href="/contact" className="link-quiet underline-offset-4 hover:underline">
+          Choose a contact path
         </Link>
       </div>
     </>

@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/layout/page-hero";
 import { company } from "@/content/company";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "HIPAA & BAA",
-  description: "How 360VERTEXAI treats PHI and Business Associate Agreements.",
-};
+  description: "How 360VERTEXAI treats PHI and Business Associate Agreements for RCM operations.",
+  path: "/hipaa",
+});
 
 export default function HipaaPage() {
   return (
@@ -15,7 +17,7 @@ export default function HipaaPage() {
         title="HIPAA, BAAs, and why this website refuses patient data."
         lede="US healthcare RCM requires a Business Associate Agreement before PHI or EHR access. The public site is built to make that boundary obvious."
       />
-      <article className="mx-auto max-w-3xl space-y-5 px-4 py-10 text-[1.02rem] leading-7 text-slate-200 sm:px-6">
+      <article className="mx-auto max-w-3xl space-y-5 px-4 py-10 text-[1.02rem] leading-7 text-fg-muted sm:px-6">
         <p>
           {company.legalName} will execute a Business Associate Agreement with covered entities and
           business associates before receiving PHI, accessing a practice management system, or
@@ -31,8 +33,19 @@ export default function HipaaPage() {
           wait for a secure channel.
         </p>
         <p>
-          Request a BAA conversation from the contact page or {company.email} / {company.salesEmail}. Do not attach a census
+          Request a BAA conversation from{" "}
+          <Link href="/contact/rcm" className="link-quiet underline-offset-4 hover:underline">
+            Talk to an Expert
+          </Link>{" "}
+          or {company.email} / {company.salesEmail}. Do not attach a census
           or 837 file to that first message.
+        </p>
+        <p>
+          Full Trust & Security (HIPAA, SOC 2, candidate/HR data, residency):{" "}
+          <Link href="/trust" className="link-quiet underline-offset-4 hover:underline">
+            /trust
+          </Link>
+          .
         </p>
       </article>
     </>

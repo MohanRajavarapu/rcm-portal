@@ -33,8 +33,8 @@ export function SpecialtiesCatalog() {
             className={cn(
               "rounded-full border px-3.5 py-1.5 text-sm transition-colors",
               filter === item
-                ? "border-mint bg-mint text-primary-foreground"
-                : "border-white/20 bg-transparent text-[#d1d5db] hover:border-cyan/40 hover:text-white",
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-[var(--border-strong)] bg-transparent text-fg-muted hover:bg-surface-3 hover:text-fg",
             )}
           >
             {item}
@@ -48,7 +48,7 @@ export function SpecialtiesCatalog() {
               <CardHeader>
                 <Badge variant="secondary">{specialty.category}</Badge>
                 <CardTitle className="mt-2 text-xl">{specialty.name}</CardTitle>
-                <CardDescription className="leading-[1.6] text-[#d1d5db]">{specialty.summary}</CardDescription>
+                <CardDescription>{specialty.summary}</CardDescription>
               </CardHeader>
             </Card>
           </Link>

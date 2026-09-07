@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { CtaBand, PageHero } from "@/components/layout/page-hero";
 import { getService, services } from "@/content/services";
+import { pageMeta } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -14,7 +15,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
-  return { title: service.name, description: service.summary };
+  return pageMeta({
+    title: service.name,
+    description: service.summary,
+    path: `/services/${service.slug}`,
+  });
 }
 
 export default async function ServicePage({ params }: Props) {
@@ -31,17 +36,17 @@ export default async function ServicePage({ params }: Props) {
         lede={service.summary}
         crumbs={[
           { href: "/", label: "Home" },
-          { href: "/services", label: "Services" },
+          { href: "/services", label: "For Healthcare Providers" },
           { href: `/services/${service.slug}`, label: service.name },
         ]}
       />
       <section className="page-section grid gap-6 py-6 lg:grid-cols-12 lg:items-start">
-        <div className="lg:col-span-7 space-y-4 text-[1.05rem] leading-[1.6] text-[#e0e0e0]">
+        <div className="lg:col-span-7 space-y-4 text-[1.05rem] leading-[1.6] text-fg-muted">
           <div className="grid gap-3 sm:grid-cols-3">
             {service.stats.map((stat) => (
-              <div key={stat.label} className="interactive-card rounded-xl border border-white/10 bg-card p-4">
-                <p className="text-xl font-semibold text-mint">{stat.value}</p>
-                <p className="mt-1 text-xs leading-[1.6] text-[#d1d5db]">{stat.label}</p>
+              <div key={stat.label} className="rounded-xl border border-[var(--border-subtle)] bg-surface-2 p-4">
+                <p className="stat-number text-xl">{stat.value}</p>
+                <p className="caption mt-1 leading-[1.6]">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -51,10 +56,10 @@ export default async function ServicePage({ params }: Props) {
           <p>{service.outcome}</p>
         </div>
         <aside className="lg:col-span-5 lg:sticky lg:top-[calc(var(--header-height)+1rem)]">
-          <div className="rounded-xl border border-white/10 bg-[#181a20] p-5">
+          <div className="surface-card p-5">
             <Badge variant="secondary">{service.cycle}</Badge>
             <h2 className="mt-3 text-xl">What we run</h2>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-[1.6] text-[#d1d5db]">
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-[1.6] text-fg-muted">
               {service.capabilities.map((item) => (
                 <li key={item}>{item}</li>
               ))}

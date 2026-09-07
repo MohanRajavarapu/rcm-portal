@@ -1,37 +1,68 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/content/services";
 import { specialties } from "@/content/specialties";
+import { engagementModels } from "@/content/staffing";
 
 export const dynamic = "force-static";
 
+const origin = process.env.NEXT_PUBLIC_SITE_URL ?? "https://360vertexai.com";
+const slash =
+  process.env.GITHUB_PAGES === "true" || process.env.GITHUB_ACTIONS === "true";
+
+function loc(path: string) {
+  if (!path) return origin;
+  const normalized = slash && !path.endsWith("/") ? `${path}/` : path;
+  return `${origin}${normalized}`;
+}
+
+function urls(paths: string[]): MetadataRoute.Sitemap {
+  const now = new Date();
+  return paths.map((path) => ({
+    url: loc(path),
+    lastModified: now,
+  }));
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = [
+  // Cluster 1 — Healthcare RCM / AI operations
+  const rcm = urls([
     "",
-    "/about",
-    "/why",
     "/services",
+    ...services.map((service) => `/services/${service.slug}`),
     "/specialties",
+    ...specialties.map((specialty) => `/specialties/${specialty.slug}`),
     "/technology",
+    "/why",
+    "/contact/rcm",
+    "/hipaa",
+  ]);
+
+  // Cluster 2 — Staffing & workforce solutions
+  const staffing = urls([
+    "/staffing",
+    "/staffing/engagement-models",
+    "/staffing/compare",
+    ...engagementModels.map((model) => `/staffing/${model.slug}`),
+    "/staffing/pods",
+    "/staffing/roles",
+    "/staffing/compliance",
+    "/contact/staffing",
+  ]);
+
+  const shared = urls([
+    "/about",
+    "/company/leadership",
+    "/proof",
+    "/proof/case-studies",
+    "/proof/metrics",
+    "/trust",
     "/careers",
+    "/careers/life",
     "/contact",
     "/privacy",
-    "/hipaa",
     "/terms",
-  ];
-  const now = new Date();
+    "/legal/contracts",
+  ]);
 
-  return [
-    ...staticPaths.map((path) => ({
-      url: `https://mohanrajavarapu.github.io/rcm-portal${path}`,
-      lastModified: now,
-    })),
-    ...services.map((service) => ({
-      url: `https://mohanrajavarapu.github.io/rcm-portal/services/${service.slug}`,
-      lastModified: now,
-    })),
-    ...specialties.map((specialty) => ({
-      url: `https://mohanrajavarapu.github.io/rcm-portal/specialties/${specialty.slug}`,
-      lastModified: now,
-    })),
-  ];
+  return [...rcm, ...staffing, ...shared];
 }

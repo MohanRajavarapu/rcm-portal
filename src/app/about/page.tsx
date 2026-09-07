@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 import { Brain, ShieldCheck, Workflow, Mail, Phone, Clock, MapPin, Globe } from "lucide-react";
 import { CtaBand, PageHero } from "@/components/layout/page-hero";
 import { company } from "@/content/company";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "About",
   description: `Who ${company.legalName} is and how we run US healthcare RCM.`,
-};
+  path: "/about",
+});
 
 const pillars = [
   {
@@ -42,22 +44,26 @@ export default function AboutPage() {
         eyebrow="About"
         title="A private limited company built to run US revenue cycle with AI in the loop."
         lede={`${company.legalName} designs and operates eligibility, coding, claims, denials, A/R, and posting for United States providers.`}
+        crumbs={[
+          { href: "/about", label: "Company" },
+          { href: "/about", label: "About Us" },
+        ]}
       />
       <section className="page-section grid gap-6 py-8 lg:grid-cols-3">
         {pillars.map((pillar) => (
-          <article key={pillar.title} className="glass-panel interactive-card rounded-xl p-5">
-            <span className="grid size-10 place-items-center rounded-lg bg-mint/15 text-mint">
+            <article key={pillar.title} className="surface-card p-5">
+            <span className="grid size-10 place-items-center rounded-lg bg-trust/10 text-trust">
               <pillar.icon className="size-5" aria-hidden />
             </span>
             <h2 className="mt-4 text-xl">{pillar.title}</h2>
-            <p className="mt-2 text-sm leading-[1.6] text-[#d1d5db]">{pillar.body}</p>
+            <p className="mt-2 text-sm leading-[1.6] text-fg-muted">{pillar.body}</p>
           </article>
         ))}
       </section>
 
-      <section className="border-t border-white/10">
+      <section className="border-t border-[var(--border-subtle)]">
         <div className="page-section grid gap-8 py-8 lg:grid-cols-12">
-          <div className="lg:col-span-7 space-y-4 text-[1.05rem] leading-[1.6] text-[#e0e0e0]">
+          <div className="lg:col-span-7 space-y-4 text-[1.05rem] leading-[1.6] text-fg-muted">
             <p>
               Healthcare billing fails in the seams: an eligibility miss, a modifier, a clearinghouse
               edit, a denial nobody categorized. We built 360VERTEXAI to own those seams as one
@@ -69,22 +75,22 @@ export default function AboutPage() {
             </p>
           </div>
           <aside className="lg:col-span-5">
-            <div className="glass-panel rounded-xl p-5">
-              <p className="text-xs font-semibold tracking-[0.16em] text-mint uppercase">Legal entity</p>
+            <div className="surface-card p-5">
+              <p className="eyebrow-label">Legal entity</p>
               <p className="mt-2 font-heading text-xl">{company.legalName}</p>
               <div className="mt-4 grid gap-2">
                 {chips.map((chip) => {
                   const Icon = chip.icon;
                   const inner = (
                     <>
-                      <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-mint/15 text-mint">
+                      <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-surface-3 text-trust">
                         <Icon className="size-4" aria-hidden />
                       </span>
                       <span className="min-w-0">
-                        <span className="block text-[0.65rem] font-semibold tracking-[0.16em] text-mint uppercase">
+                        <span className="eyebrow-label block text-[0.65rem]">
                           {chip.label}
                         </span>
-                        <span className="block truncate text-sm text-[#e0e0e0]">{chip.value}</span>
+                        <span className="block truncate text-sm text-fg">{chip.value}</span>
                       </span>
                     </>
                   );
@@ -92,14 +98,14 @@ export default function AboutPage() {
                     <a
                       key={chip.label}
                       href={chip.href}
-                      className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#0b0c10]/60 px-3 py-2.5 transition-colors hover:border-cyan/40"
+                      className="flex items-center gap-3 rounded-xl border border-[var(--border-subtle)] bg-surface-0 px-3 py-2.5 hover:bg-surface-3"
                     >
                       {inner}
                     </a>
                   ) : (
                     <div
                       key={chip.label}
-                      className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#0b0c10]/60 px-3 py-2.5"
+                      className="flex items-center gap-3 rounded-xl border border-[var(--border-subtle)] bg-surface-0 px-3 py-2.5"
                     >
                       {inner}
                     </div>
@@ -111,7 +117,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-white/10 bg-[#121212]/60">
+      <section className="section-alt border-t border-[var(--border-subtle)]">
         <div className="page-section grid gap-4 py-8 sm:grid-cols-3">
           {[
             {
@@ -127,13 +133,18 @@ export default function AboutPage() {
               d: "No PHI on public channels. No vanity metrics. No code without an attester. Weekly truth over quarterly theater.",
             },
           ].map((item) => (
-            <div key={item.t} className="glass-panel rounded-xl p-5">
+            <div key={item.t} className="surface-card p-5">
               <h2 className="text-2xl">{item.t}</h2>
-              <p className="mt-2 text-sm leading-[1.6] text-[#d1d5db]">{item.d}</p>
+              <p className="mt-2 text-sm leading-[1.6] text-fg-muted">{item.d}</p>
             </div>
           ))}
         </div>
       </section>
+      <div className="page-section pb-4">
+        <Link href="/company/leadership" className="link-quiet text-sm underline-offset-4 hover:underline">
+          Leadership →
+        </Link>
+      </div>
       <CtaBand />
     </>
   );

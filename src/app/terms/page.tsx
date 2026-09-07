@@ -1,17 +1,18 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/page-hero";
 import { company } from "@/content/company";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Terms",
   description: `Website terms for ${company.legalName}.`,
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (
     <>
       <PageHero eyebrow="Legal" title="Website terms" lede="These terms apply to 360vertexai.com and this application—not to a signed RCM services agreement." />
-      <article className="mx-auto max-w-3xl space-y-5 px-4 py-10 text-[1.02rem] leading-7 text-slate-200 sm:px-6">
+      <article className="mx-auto max-w-3xl space-y-5 px-4 py-10 text-[1.02rem] leading-7 text-fg-muted sm:px-6">
         <p>
           Content on this site is informational. It is not medical, coding, or legal advice and does
           not create a client relationship. Paid RCM work starts only when both parties sign a

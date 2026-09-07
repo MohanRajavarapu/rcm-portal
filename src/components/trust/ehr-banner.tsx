@@ -1,83 +1,51 @@
-function EpicLogo() {
+function Mark({
+  width,
+  label,
+  ariaLabel,
+}: {
+  width: number;
+  label: string;
+  ariaLabel: string;
+}) {
   return (
-    <svg viewBox="0 0 120 32" className="h-8 w-auto" aria-label="Epic">
-      <rect width="120" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
-      <text x="60" y="21" textAnchor="middle" fill="#E0E0E0" fontSize="13" fontWeight="700" fontFamily="system-ui,sans-serif">
-        EPIC
+    <svg viewBox={`0 0 ${width} 32`} className="h-8 w-auto" aria-label={ariaLabel}>
+      <rect width={width} height="32" rx="6" fill="var(--surface-2)" stroke="var(--border-subtle)" />
+      <text
+        x={width / 2}
+        y="21"
+        textAnchor="middle"
+        fill="var(--text-primary)"
+        fontSize="11"
+        fontWeight="650"
+        fontFamily="system-ui,sans-serif"
+      >
+        {label}
       </text>
     </svg>
   );
 }
 
-function AthenaLogo() {
-  return (
-    <svg viewBox="0 0 160 32" className="h-8 w-auto" aria-label="Athenahealth">
-      <rect width="160" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
-      <text x="80" y="21" textAnchor="middle" fill="#00E5FF" fontSize="11" fontWeight="600" fontFamily="system-ui,sans-serif">
-        athenahealth
-      </text>
-    </svg>
-  );
-}
-
-function CernerLogo() {
-  return (
-    <svg viewBox="0 0 120 32" className="h-8 w-auto" aria-label="Cerner">
-      <rect width="120" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
-      <text x="60" y="21" textAnchor="middle" fill="#E0E0E0" fontSize="12" fontWeight="700" fontFamily="system-ui,sans-serif">
-        CERNER
-      </text>
-    </svg>
-  );
-}
-
-function EclinicalworksLogo() {
-  return (
-    <svg viewBox="0 0 180 32" className="h-8 w-auto" aria-label="eClinicalWorks">
-      <rect width="180" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
-      <text x="90" y="21" textAnchor="middle" fill="#00E599" fontSize="10" fontWeight="600" fontFamily="system-ui,sans-serif">
-        eClinicalWorks
-      </text>
-    </svg>
-  );
-}
-
-function NextGenLogo() {
-  return (
-    <svg viewBox="0 0 130 32" className="h-8 w-auto" aria-label="NextGen">
-      <rect width="130" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
-      <text x="65" y="21" textAnchor="middle" fill="#E0E0E0" fontSize="11" fontWeight="700" fontFamily="system-ui,sans-serif">
-        NextGen
-      </text>
-    </svg>
-  );
-}
-
-function KareoLogo() {
-  return (
-    <svg viewBox="0 0 100 32" className="h-8 w-auto" aria-label="Kareo">
-      <rect width="100" height="32" rx="6" fill="#181A20" stroke="rgba(255,255,255,0.08)" />
-      <text x="50" y="21" textAnchor="middle" fill="#00E5FF" fontSize="12" fontWeight="700" fontFamily="system-ui,sans-serif">
-        Kareo
-      </text>
-    </svg>
-  );
-}
-
-const logos = [EpicLogo, AthenaLogo, CernerLogo, EclinicalworksLogo, NextGenLogo, KareoLogo];
+const marks = [
+  { width: 120, label: "Epic", ariaLabel: "Epic" },
+  { width: 160, label: "athenahealth", ariaLabel: "Athenahealth" },
+  { width: 120, label: "Cerner", ariaLabel: "Cerner" },
+  { width: 180, label: "eClinicalWorks", ariaLabel: "eClinicalWorks" },
+  { width: 130, label: "NextGen", ariaLabel: "NextGen" },
+  { width: 100, label: "Kareo", ariaLabel: "Kareo" },
+];
 
 export function EhrBanner() {
   return (
-    <section className="border-b border-white/8 bg-[#121212]" aria-label="Compatible EHR systems">
+    <section className="section-alt border-b border-[var(--border-subtle)]" aria-label="Compatible EHR systems">
       <div className="page-section py-8">
-        <p className="text-center text-xs font-semibold tracking-[0.2em] text-mint uppercase">EHR integration</p>
-        <p className="mt-2 text-center text-sm text-[#d1d5db]">
+        <p className="eyebrow-label text-center">EHR integration</p>
+        <p className="mt-2 text-center text-sm text-fg-muted">
           We operate inside the practice-management stack you already run.
         </p>
         <ul className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-          {logos.map((Logo, index) => (
-            <li key={index}>
-              <Logo />
+          {marks.map((mark) => (
+            <li key={mark.label}>
+              <Mark {...mark} />
             </li>
           ))}
         </ul>

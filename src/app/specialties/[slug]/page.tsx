@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { CtaBand, PageHero } from "@/components/layout/page-hero";
 import { getSpecialty, specialties } from "@/content/specialties";
+import { pageMeta } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -14,7 +15,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const specialty = getSpecialty(slug);
   if (!specialty) return {};
-  return { title: specialty.name, description: specialty.summary };
+  return pageMeta({
+    title: specialty.name,
+    description: specialty.summary,
+    path: `/specialties/${specialty.slug}`,
+  });
 }
 
 export default async function SpecialtyPage({ params }: Props) {
@@ -39,15 +44,15 @@ export default async function SpecialtyPage({ params }: Props) {
         <h2 className="mt-4 text-2xl">Where we concentrate</h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-3">
           {specialty.focus.map((item) => (
-            <li key={item} className="rounded-xl border border-white/10 bg-card p-4 text-sm leading-6 text-slate-200">
+            <li key={item} className="surface-card p-4 text-sm leading-6 text-fg-muted">
               {item}
             </li>
           ))}
         </ul>
         {specialty.workflow ? (
-          <div className="mt-8 rounded-xl border border-white/10 bg-card p-5">
+          <div className="mt-8 surface-card p-5">
             <h3 className="text-xl">Actionable workflow</h3>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-200">
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-fg-muted">
               {specialty.workflow.map((item) => (
                 <li key={item}>{item}</li>
               ))}

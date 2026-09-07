@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { CtaBand, PageHero } from "@/components/layout/page-hero";
 import { SpecialtiesCatalog } from "@/components/specialties/specialties-catalog";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Specialties",
+export const metadata = pageMeta({
+  title: "RCM specialties",
   description:
     "Specialty-tailored coding precision for commercial, Medicare, Medicaid, and regional payers.",
-};
+  path: "/specialties",
+});
 
 export default function SpecialtiesPage() {
   return (

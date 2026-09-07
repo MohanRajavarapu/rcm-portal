@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     template: `%s · ${company.brandName}`,
   },
   description: company.description,
+  alternates: { canonical: "/" },
   icons: {
     icon: withBasePath("/brand/logo.jpg"),
     apple: withBasePath("/brand/logo.jpg"),
@@ -64,7 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <SiteHeader />
-        <main className="content-safe flex-1 pt-[var(--header-height)]">{children}</main>
+        <main className="content-safe flex-1">{children}</main>
         <SiteFooter />
       </body>
     </html>

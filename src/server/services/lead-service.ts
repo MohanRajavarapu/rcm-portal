@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { company } from "@/content/company";
+import { containsRestrictedCandidateText } from "@/lib/phi";
 import { appendJsonRecord } from "@/server/store";
 
 export type LeadInput = {
@@ -10,7 +11,7 @@ export type LeadInput = {
   specialty?: string;
   interest?: string;
   message: string;
-  source: "contact" | "assessment";
+  source: "contact" | "assessment" | "staffing";
 };
 
 export type Lead = LeadInput & {
@@ -19,9 +20,6 @@ export type Lead = LeadInput & {
 };
 
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const phiHints =
-  /\b(ssn|social security|mrn|date of birth|dob|patient name|icd-10|claim number|member id|subscriber)\b/i;
 
 export function validateLead(input: Partial<LeadInput>): {
   ok: true;
@@ -35,13 +33,15 @@ export function validateLead(input: Partial<LeadInput>): {
   if (message.length < 12) {
     return { ok: false, error: "Tell us a bit more about the practice or the problem." };
   }
-  if (phiHints.test(message) || phiHints.test(name)) {
+  if (containsRestrictedCandidateText(`${message} ${name} ${input.organization ?? ""}`)) {
     return {
       ok: false,
       error:
-        "Do not include patient identifiers, MRNs, claim numbers, or other PHI. Describe the practice only.",
+        "Do not include patient identifiers, MRNs, claim numbers, SSNs, dates of birth, or health details. Describe the practice or staffing need only.",
     };
   }
+  const source =
+    input.source === "assessment" ? "assessment" : input.source === "staffing" ? "staffing" : "contact";
   return {
     ok: true,
     value: {
@@ -52,7 +52,7 @@ export function validateLead(input: Partial<LeadInput>): {
       specialty: input.specialty?.trim() || undefined,
       interest: input.interest?.trim() || undefined,
       message,
-      source: input.source === "assessment" ? "assessment" : "contact",
+      source,
     },
   };
 }

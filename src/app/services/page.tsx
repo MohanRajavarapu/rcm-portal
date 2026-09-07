@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CtaBand, PageHero } from "@/components/layout/page-hero";
 import { services, servicesByCycle } from "@/content/services";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "RCM services",
-  description: "Eligibility, coding, claims, denials, A/R, posting, credentialing, and analytics.",
-};
+export const metadata = pageMeta({
+  title: "RCM services for healthcare providers",
+  description: "Eligibility, coding, claims, denials, A/R, posting, credentialing, and analytics — not staffing.",
+  path: "/services",
+});
 
 const phases = [
   { id: "front-cycle", label: "Front-cycle" },
@@ -28,12 +29,12 @@ export default function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Services"
+        eyebrow="For healthcare providers"
         title="Every station of the revenue cycle, available as a slice or the full loop."
         lede="Start with denials or aged A/R if that is where cash is stuck. Expand when the cadence is proven."
       />
       <nav
-        className="sticky top-[var(--header-height)] z-[900] border-b border-white/10 bg-[rgba(11,12,16,0.92)] backdrop-blur-[12px]"
+        className="sticky top-[var(--header-height)] z-[40] border-b border-[var(--border-subtle)] bg-surface-0/90 backdrop-blur-[12px]"
         aria-label="Service phases"
       >
         <div className="page-section flex gap-2 overflow-x-auto py-3">
@@ -41,7 +42,7 @@ export default function ServicesPage() {
             <a
               key={phase.id}
               href={`#${phase.id}`}
-              className="shrink-0 rounded-full border border-mint/40 bg-mint/15 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-mint uppercase hover:bg-mint/25"
+              className="trust-chip hover:bg-trust/20"
             >
               {phase.label}
             </a>
@@ -52,7 +53,7 @@ export default function ServicesPage() {
         {(Object.keys(servicesByCycle) as Array<keyof typeof servicesByCycle>).map((cycle) => (
           <div key={cycle} id={cycleAnchors[cycle]} className="scroll-anchor">
             <h2 className="text-2xl">
-              <span className="text-xs font-semibold tracking-[0.2em] text-mint uppercase">{cycle}</span>
+              <span className="eyebrow-label">{cycle}</span>
               <span className="mt-1 block">{cycle}-cycle</span>
             </h2>
             <div className="mt-4 grid gap-4 md:grid-cols-2">
@@ -62,8 +63,8 @@ export default function ServicesPage() {
                     <CardHeader>
                       <Badge variant="secondary">{service.cycle}</Badge>
                       <CardTitle className="mt-2 text-xl">{service.name}</CardTitle>
-                      <CardDescription className="leading-[1.6] text-[#d1d5db]">{service.summary}</CardDescription>
-                      <p className="pt-2 text-sm text-cyan">{service.outcome}</p>
+                      <CardDescription>{service.summary}</CardDescription>
+                      <p className="pt-2 text-sm text-fg">{service.outcome}</p>
                     </CardHeader>
                   </Card>
                 </Link>
@@ -71,7 +72,7 @@ export default function ServicesPage() {
             </div>
           </div>
         ))}
-        <p className="text-sm text-[#d1d5db]">{services.length} services in the public catalog.</p>
+        <p className="caption">{services.length} services in the public catalog.</p>
       </section>
       <CtaBand />
     </>

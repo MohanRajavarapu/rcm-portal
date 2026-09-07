@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { noPhiCopy } from "@/lib/phi";
 import type { Job } from "@/content/jobs";
 import { withBasePath } from "@/lib/base-path";
 
@@ -35,7 +36,7 @@ export function ApplyForm({ jobs, defaultJobId }: { jobs: Job[]; defaultJobId?: 
 
   if (status === "ok") {
     return (
-      <div className="glass-panel rounded-xl p-6">
+      <div className="surface-card">
         <p className="font-heading text-2xl">Application received</p>
         <p className="mt-2 text-sm text-muted-foreground">
           If the role is a match, we will write to the email you provided. Do not attach patient work
@@ -47,6 +48,9 @@ export function ApplyForm({ jobs, defaultJobId }: { jobs: Job[]; defaultJobId?: 
 
   return (
     <form onSubmit={onSubmit} className="relative z-20 grid gap-4">
+      <div role="alert" className="rounded-lg border border-warning/40 bg-warning/10 px-4 py-3 text-sm text-fg">
+        <strong className="text-warning">Zero PHI / no medical history.</strong> {noPhiCopy}
+      </div>
       <div className="grid gap-1.5">
         <Label htmlFor="jobId">Role</Label>
         <select
@@ -54,7 +58,7 @@ export function ApplyForm({ jobs, defaultJobId }: { jobs: Job[]; defaultJobId?: 
           name="jobId"
           required
           defaultValue={defaultJobId ?? jobs[0]?.id}
-          className="relative z-20 h-11 w-full rounded-lg border border-input bg-[#0f282d] px-2.5 text-sm text-slate-200"
+          className="relative z-20 h-11 w-full rounded-lg border border-[var(--border-default)] bg-surface-3 px-2.5 text-sm text-fg"
         >
           {jobs.map((job) => (
             <option key={job.id} value={job.id}>
@@ -92,7 +96,7 @@ export function ApplyForm({ jobs, defaultJobId }: { jobs: Job[]; defaultJobId?: 
           name="note"
           required
           rows={5}
-          placeholder="US RCM systems, specialties, coding credentials, denial or A/R inventory sizes you have owned."
+          placeholder={`US RCM systems, specialties, coding credentials. ${noPhiCopy}`}
         />
       </div>
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
