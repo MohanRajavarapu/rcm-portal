@@ -22,8 +22,8 @@ export function PageHero({
       <div
         className={
           compact
-            ? "relative mx-auto max-w-6xl scroll-anchor px-4 py-8 sm:px-6 sm:py-10"
-            : "relative mx-auto max-w-6xl scroll-anchor px-4 py-12 sm:px-6 sm:py-14"
+            ? "relative mx-auto max-w-6xl scroll-anchor px-4 py-6 sm:px-6 sm:py-8"
+            : "relative mx-auto max-w-6xl scroll-anchor px-4 py-8 sm:px-6 sm:py-10"
         }
       >
         {crumbs ? (
@@ -60,7 +60,7 @@ export function CtaBand({
 }) {
   return (
     <section className="scroll-anchor border-t border-slate-200 bg-[#f8fafc]" id="assessment">
-      <div className="page-section flex flex-col items-start justify-between gap-4 py-16 md:py-24 sm:flex-row sm:items-center">
+      <div className="page-section flex flex-col items-start justify-between gap-4 py-8 md:py-10 sm:flex-row sm:items-center">
         <div>
           <p className="eyebrow-label">{eyebrow}</p>
           <h2 className="mt-2 text-2xl sm:text-3xl">Talk to an Expert</h2>

@@ -12,7 +12,7 @@ export function LegacyRedirect({ to }: { to: string }) {
   }, [router, to]);
 
   return (
-    <section className="page-section py-16">
+    <section className="page-section py-10">
       <p className="text-sm text-fg-muted">
         This page has moved to{" "}
         <Link href={to} className="link-quiet underline-offset-4 hover:underline">

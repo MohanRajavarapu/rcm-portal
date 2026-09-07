@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { withBasePath } from "@/lib/base-path";
 
-export function NewsletterForm() {
+export function NewsletterForm({ tone = "light" }: { tone?: "light" | "dark" }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [error, setError] = useState("");
+  const onDark = tone === "dark";
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -30,7 +31,11 @@ export function NewsletterForm() {
   }
 
   if (status === "ok") {
-    return <p className="text-sm text-fg">You are on the list. No PHI, ever, in this inbox.</p>;
+    return (
+      <p className={onDark ? "text-sm text-slate-300" : "text-sm text-fg"}>
+        You are on the list. No PHI, ever, in this inbox.
+      </p>
+    );
   }
 
   return (
@@ -41,7 +46,11 @@ export function NewsletterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Work email"
-        className="h-10"
+        className={
+          onDark
+            ? "h-10 border-slate-700 bg-slate-800 text-white placeholder:text-slate-400"
+            : "h-10"
+        }
         aria-label="Email for operations notes"
       />
       <Button type="submit" disabled={status === "loading"} className="h-10 px-4">

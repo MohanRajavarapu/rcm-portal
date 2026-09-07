@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
@@ -12,6 +12,31 @@ import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [compact, setCompact] = useState(false);
+  const barRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const measureRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const bar = barRef.current;
+    if (!bar) return;
+
+    const update = () => {
+      const navWidth = measureRef.current?.scrollWidth ?? 0;
+      const logoWidth = logoRef.current?.offsetWidth ?? 0;
+      const ctaWidth = ctaRef.current?.offsetWidth ?? 0;
+      const available = bar.clientWidth - logoWidth - ctaWidth - 64;
+      const next = navWidth > available;
+      setCompact(next);
+      if (!next) setMenuOpen(false);
+    };
+
+    const observer = new ResizeObserver(update);
+    observer.observe(bar);
+    update();
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -24,34 +49,63 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      <div className="mx-auto flex h-[var(--header-height)] max-w-[90rem] items-center justify-between gap-3 px-4 sm:px-6">
-        <Logo />
-        <div className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3">
-          <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Primary">
-            {primaryNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="link-quiet rounded-lg px-2.5 py-2 text-sm font-medium"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <TalkToExpertCta className="h-10 px-3 text-sm" />
-          <button
-            type="button"
-            className={cn(buttonVariants({ variant: "outline", size: "icon" }), "xl:hidden")}
-            aria-label="Open menu"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(true)}
-          >
-            <Menu className="size-4" />
-          </button>
+      <div
+        ref={barRef}
+        className="relative mx-auto flex h-[var(--header-height)] max-w-[90rem] items-center justify-between gap-3 px-4 sm:px-6"
+      >
+        <div ref={logoRef} className="shrink-0">
+          <Logo />
+        </div>
+
+        <nav
+          ref={measureRef}
+          aria-hidden
+          className="pointer-events-none invisible absolute flex items-center gap-0.5 whitespace-nowrap"
+        >
+          {primaryNav.map((item) => (
+            <span key={item.href} className="px-2.5 py-2 text-sm font-medium">
+              {item.label}
+            </span>
+          ))}
+        </nav>
+
+        <nav
+          className={cn(
+            "absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-0.5",
+            !compact && "flex",
+          )}
+          aria-label="Primary"
+        >
+          {primaryNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="link-quiet rounded-lg px-2.5 py-2 text-center text-sm font-medium"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex shrink-0 items-center gap-2">
+          <div ref={ctaRef}>
+            <TalkToExpertCta className="h-10 px-3 text-sm" />
+          </div>
+          {compact ? (
+            <button
+              type="button"
+              className={cn(buttonVariants({ variant: "outline", size: "icon" }))}
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(true)}
+            >
+              <Menu className="size-4" />
+            </button>
+          ) : null}
         </div>
       </div>
-      {menuOpen ? (
-        <div className="fixed inset-0 z-[1001] xl:hidden" role="dialog" aria-modal="true" aria-label="Menu">
+      {menuOpen && compact ? (
+        <div className="fixed inset-0 z-[1001]" role="dialog" aria-modal="true" aria-label="Menu">
           <button
             type="button"
             className="absolute inset-0 bg-surface-0/70"

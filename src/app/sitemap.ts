@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/our-work",
     "/about",
     "/about/trust-security",
-    "/company/leadership",
+    "/about/leadership",
     "/careers",
     "/careers/life",
     "/contact",

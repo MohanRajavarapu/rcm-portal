@@ -141,7 +141,7 @@ export default function AboutPage() {
         </div>
       </section>
       <div className="page-section pb-4">
-        <Link href="/company/leadership" className="link-quiet text-sm underline-offset-4 hover:underline">
+        <Link href="/about/leadership" className="link-quiet text-sm underline-offset-4 hover:underline">
           Leadership →
         </Link>
       </div>

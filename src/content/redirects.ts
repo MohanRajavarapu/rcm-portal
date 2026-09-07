@@ -16,6 +16,7 @@ export const permanentMoves: { source: string; destination: string }[] = [
   { source: "/proof/metrics", destination: "/our-work" },
   { source: "/trust", destination: "/about/trust-security" },
   { source: "/hipaa", destination: "/about/trust-security" },
+  { source: "/company/leadership", destination: "/about/leadership" },
 ];
 
 export const permanentMovePatterns: { source: string; destination: string }[] = [

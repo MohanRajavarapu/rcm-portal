@@ -41,6 +41,7 @@ const nextConfig: NextConfig = {
             { source: "/proof/metrics", destination: "/our-work", permanent: true },
             { source: "/trust", destination: "/about/trust-security", permanent: true },
             { source: "/hipaa", destination: "/about/trust-security", permanent: true },
+            { source: "/company/leadership", destination: "/about/leadership", permanent: true },
           ];
         },
       }
