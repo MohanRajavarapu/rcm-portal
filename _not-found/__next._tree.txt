@@ -1,2 +1,3 @@
-:HL["/rcm-portal/_next/static/chunks/3li_qq9yp5ynm.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4180,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"f2Vdrt4m9jjkJsEQmMDAH"}
+:HL["/rcm-portal/_next/static/chunks/1ydz8v40nzqju.css","style"]
+:HL["/rcm-portal/brand/logo.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4116,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"VSPAbpHwljO9Ri9epkkgY"}
