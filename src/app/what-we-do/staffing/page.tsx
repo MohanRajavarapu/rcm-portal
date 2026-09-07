@@ -17,11 +17,11 @@ export default function StaffingPillarPage() {
   return (
     <>
       <PageHero
-        eyebrow="What We Do · Staffing"
+        eyebrow="Services · Staffing"
         title="Scale the team without mixing this up with RCM outsourcing."
         lede="Workforce buyers: named operators, pods, EOR, and searches. If you need us to run the cycle, use RCM & AI Operations."
         crumbs={[
-          { href: "/what-we-do", label: "What We Do" },
+          { href: "/what-we-do", label: "Services" },
           { href: "/what-we-do/staffing", label: "Staffing & Workforce" },
         ]}
       />

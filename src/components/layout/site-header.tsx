@@ -5,8 +5,9 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { TalkToExpertCta } from "@/components/cta/talk-to-an-expert";
+import { ServicesDropdown } from "@/components/layout/nav-dropdown";
 import { buttonVariants } from "@/components/ui/button";
-import { primaryNav } from "@/content/navigation";
+import { primaryNav, serviceNav } from "@/content/navigation";
 import { company } from "@/content/company";
 import { cn } from "@/lib/utils";
 
@@ -62,6 +63,7 @@ export function SiteHeader() {
           aria-hidden
           className="pointer-events-none invisible absolute flex items-center gap-0.5 whitespace-nowrap"
         >
+          <span className="px-2.5 py-2 text-sm font-medium">Services</span>
           {primaryNav.map((item) => (
             <span key={item.href} className="px-2.5 py-2 text-sm font-medium">
               {item.label}
@@ -76,11 +78,12 @@ export function SiteHeader() {
           )}
           aria-label="Primary"
         >
+          <ServicesDropdown />
           {primaryNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="link-quiet rounded-lg px-2.5 py-2 text-center text-sm font-medium"
+              className="link-quiet whitespace-nowrap rounded-lg px-2.5 py-2 text-center text-sm font-medium"
             >
               {item.label}
             </Link>
@@ -125,6 +128,19 @@ export function SiteHeader() {
               </button>
             </div>
             <nav className="mt-6 flex flex-col gap-1" aria-label="Mobile">
+              <p className="px-3 pt-1 text-xs font-semibold uppercase tracking-wide text-[#0f766e]">
+                Services
+              </p>
+              {serviceNav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="link-quiet rounded-lg px-3 py-2.5 text-base hover:bg-surface-3"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
               {primaryNav.map((item) => (
                 <Link
                   key={item.href}

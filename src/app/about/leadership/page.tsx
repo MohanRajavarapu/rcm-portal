@@ -36,7 +36,7 @@ export default function LeadershipPage() {
         title="Named bios when they are cleared. Seats are public now."
         lede="We do not invent executives for the website. The operating seats below are how the company is actually led. Individual names and photos publish here with written approval."
         crumbs={[
-          { href: "/about", label: "About" },
+          { href: "/about", label: "About Us" },
           { href: "/about/leadership", label: "Leadership" },
         ]}
       />

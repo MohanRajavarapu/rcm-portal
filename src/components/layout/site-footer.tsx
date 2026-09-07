@@ -15,7 +15,8 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl items-start gap-6 px-4 py-6 sm:px-6 md:grid-cols-12 md:py-8">
         <div className="md:col-span-4">
           <Logo size="footer" />
-          <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-300">{footerBio}</p>
+          <p className="mt-3 text-sm font-semibold text-white">{company.legalName}</p>
+          <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-300">{footerBio}</p>
           <p className="mt-3 text-sm font-medium">
             <a className={`${linkClass} underline-offset-4 hover:underline`} href={`mailto:${company.email}`}>
               {company.email}
@@ -26,7 +27,7 @@ export function SiteFooter() {
         </div>
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 md:col-span-8 md:content-start">
           <FooterColumn title="Company" items={footerNav.company} />
-          <FooterColumn title="What We Do" items={footerNav.offerings} />
+          <FooterColumn title="Services" items={footerNav.offerings} />
           <FooterColumn title="Specialties" items={footerNav.specialties} />
           <FooterColumn title="Legal" items={footerNav.legal} />
           <div className="col-span-2 sm:col-start-2">

@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   title: "RCM services",
-  description: "This catalog now lives under What We Do.",
+  description: "This catalog now lives under Services.",
   path: "/what-we-do/rcm",
 });
 

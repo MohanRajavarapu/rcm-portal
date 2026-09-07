@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { Brain, ShieldCheck, Workflow, Mail, Phone, Clock, MapPin, Globe } from "lucide-react";
+import { WhoWeAreLeadership } from "@/components/about/who-we-are-leadership";
 import { CtaBand, PageHero } from "@/components/layout/page-hero";
 import { company } from "@/content/company";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "About",
+  title: "About Us",
   description: `Who ${company.legalName} is and how we run US healthcare RCM.`,
   path: "/about",
 });
@@ -41,7 +42,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About"
+        eyebrow="About Us"
         title="A private limited company built to run US revenue cycle with AI in the loop."
         lede={`${company.legalName} designs and operates eligibility, coding, claims, denials, A/R, and posting for United States providers.`}
         crumbs={[
@@ -117,34 +118,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-alt border-t border-[var(--border-subtle)]">
-        <div className="page-section grid gap-4 py-8 sm:grid-cols-3">
-          {[
-            {
-              t: "Mission",
-              d: "Return earned clinical revenue to the practice with fewer preventable denials and a cycle leadership can see.",
-            },
-            {
-              t: "Vision",
-              d: "RCM operations where models never outrun documentation, and every dollar has a named owner.",
-            },
-            {
-              t: "Values",
-              d: "No PHI on public channels. No vanity metrics. No code without an attester. Weekly truth over quarterly theater.",
-            },
-          ].map((item) => (
-            <div key={item.t} className="surface-card p-5">
-              <h2 className="text-2xl">{item.t}</h2>
-              <p className="mt-2 text-sm leading-[1.6] text-fg-muted">{item.d}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      <div className="page-section pb-4">
-        <Link href="/about/leadership" className="link-quiet text-sm underline-offset-4 hover:underline">
-          Leadership →
-        </Link>
-      </div>
+      <WhoWeAreLeadership />
       <CtaBand />
     </>
   );

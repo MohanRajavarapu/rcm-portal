@@ -30,11 +30,11 @@ export default function RcmPillarPage() {
   return (
     <>
       <PageHero
-        eyebrow="What We Do · RCM"
+        eyebrow="Services · RCM"
         title="Every station of the revenue cycle, available as a slice or the full loop."
         lede="Start with denials or aged A/R if that is where cash is stuck. Expand when the cadence is proven."
         crumbs={[
-          { href: "/what-we-do", label: "What We Do" },
+          { href: "/what-we-do", label: "Services" },
           { href: "/what-we-do/rcm", label: "RCM & AI Operations" },
         ]}
       />

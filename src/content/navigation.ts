@@ -1,15 +1,22 @@
+import { pillars } from "@/content/pillars";
+
 export type NavLink = {
   href: string;
   label: string;
 };
 
-/** Exactly five primary destinations. The sixth nav element is the Talk to an Expert CTA. */
+/** Header destinations besides the Services dropdown and Talk to an Expert CTA. */
 export const primaryNav: NavLink[] = [
-  { href: "/what-we-do", label: "What We Do" },
   { href: "/our-work", label: "Our Work" },
-  { href: "/about", label: "About" },
+  { href: "/about", label: "About Us" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact Us" },
+];
+
+/** Header Services ▾ items. New capability areas come from `pillars`. */
+export const serviceNav: NavLink[] = [
+  ...pillars.map((pillar) => ({ href: pillar.href, label: pillar.navLabel })),
+  { href: "/what-we-do", label: "All offerings" },
 ];
 
 export const footerNav = {
@@ -20,7 +27,7 @@ export const footerNav = {
     { href: "/contact", label: "Contact Us" },
   ],
   offerings: [
-    { href: "/what-we-do", label: "What We Do" },
+    { href: "/what-we-do", label: "Services" },
     { href: "/what-we-do/rcm", label: "RCM & AI Operations" },
     { href: "/what-we-do/staffing", label: "Staffing & Workforce" },
     { href: "/our-work", label: "Our Work" },

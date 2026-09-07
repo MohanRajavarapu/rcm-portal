@@ -26,7 +26,7 @@ export default function TrustSecurityPage() {
         title="Two books of data. Two sets of rules."
         lede="PHI belongs to RCM operations under a BAA. Resumes and HR files belong to staffing. This is the canonical compliance page."
         crumbs={[
-          { href: "/about", label: "About" },
+          { href: "/about", label: "About Us" },
           { href: "/about/trust-security", label: "Trust & Security" },
         ]}
       />

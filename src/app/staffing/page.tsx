@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   title: "Staffing",
-  description: "Staffing now lives under What We Do.",
+  description: "Staffing now lives under Services.",
   path: "/what-we-do/staffing",
 });
 
