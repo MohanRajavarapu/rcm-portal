@@ -28,6 +28,8 @@ const nextConfig: NextConfig = {
         async redirects() {
           return [
             { source: "/services", destination: "/what-we-do/rcm", permanent: true },
+            { source: "/services/rcm", destination: "/what-we-do/rcm", permanent: true },
+            { source: "/services/staffing", destination: "/what-we-do/staffing", permanent: true },
             { source: "/services/:slug", destination: "/what-we-do/rcm/:slug", permanent: true },
             { source: "/staffing", destination: "/what-we-do/staffing", permanent: true },
             { source: "/staffing/engagement-models", destination: "/what-we-do/staffing", permanent: true },

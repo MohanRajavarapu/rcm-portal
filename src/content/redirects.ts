@@ -5,6 +5,8 @@
  */
 export const permanentMoves: { source: string; destination: string }[] = [
   { source: "/services", destination: "/what-we-do/rcm" },
+  { source: "/services/rcm", destination: "/what-we-do/rcm" },
+  { source: "/services/staffing", destination: "/what-we-do/staffing" },
   { source: "/staffing", destination: "/what-we-do/staffing" },
   { source: "/staffing/engagement-models", destination: "/what-we-do/staffing" },
   { source: "/staffing/compare", destination: "/what-we-do/staffing" },

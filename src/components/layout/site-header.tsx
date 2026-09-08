@@ -52,9 +52,9 @@ export function SiteHeader() {
     <header className="site-header">
       <div
         ref={barRef}
-        className="relative mx-auto flex h-[var(--header-height)] max-w-[90rem] items-center justify-between gap-3 px-4 sm:px-6"
+        className="relative mx-auto flex h-[var(--header-height)] max-w-[90rem] items-center gap-3 px-4 sm:px-6"
       >
-        <div ref={logoRef} className="shrink-0">
+        <div ref={logoRef} className="z-10 shrink-0">
           <Logo />
         </div>
 
@@ -73,7 +73,7 @@ export function SiteHeader() {
 
         <nav
           className={cn(
-            "absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-0.5",
+            "hidden min-w-0 flex-1 items-center justify-center gap-0.5",
             !compact && "flex",
           )}
           aria-label="Primary"
@@ -90,14 +90,17 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="z-10 ml-auto flex shrink-0 items-center gap-2">
           <div ref={ctaRef}>
             <TalkToExpertCta className="h-10 px-3 text-sm" />
           </div>
           {compact ? (
             <button
               type="button"
-              className={cn(buttonVariants({ variant: "outline", size: "icon" }))}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "icon" }),
+                "border-slate-500 bg-transparent text-white hover:bg-slate-800 hover:text-white",
+              )}
               aria-label="Open menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen(true)}
@@ -115,12 +118,15 @@ export function SiteHeader() {
             aria-label="Close menu"
             onClick={() => setMenuOpen(false)}
           />
-          <div className="absolute inset-y-0 right-0 flex w-[88vw] max-w-sm flex-col overflow-y-auto border-l border-[var(--border-default)] bg-surface-1 p-4">
+          <div className="absolute inset-y-0 right-0 flex w-[88vw] max-w-sm flex-col overflow-y-auto border-l border-slate-700 bg-[#0f172a] p-4">
             <div className="flex items-center justify-between gap-3">
               <Logo />
               <button
                 type="button"
-                className={cn(buttonVariants({ variant: "outline", size: "icon" }))}
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "icon" }),
+                  "border-slate-500 bg-transparent text-white hover:bg-slate-800 hover:text-white",
+                )}
                 aria-label="Close menu"
                 onClick={() => setMenuOpen(false)}
               >
@@ -135,7 +141,7 @@ export function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="link-quiet rounded-lg px-3 py-2.5 text-base hover:bg-surface-3"
+                  className="link-quiet rounded-lg px-3 py-2.5 text-base hover:bg-slate-800"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
@@ -145,14 +151,14 @@ export function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="link-quiet rounded-lg px-3 py-2.5 text-base hover:bg-surface-3"
+                  className="link-quiet rounded-lg px-3 py-2.5 text-base hover:bg-slate-800"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
             </nav>
-            <p className="caption mt-6 px-3">
+            <p className="caption mt-6 px-3 text-slate-400">
               {company.phoneDisplay}
               <br />
               {company.email}
