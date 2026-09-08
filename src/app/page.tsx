@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Cpu, Layers, Users } from "lucide-react";
 import { WhoWeAreLeadership } from "@/components/about/who-we-are-leadership";
 import { company } from "@/content/company";
-import { services } from "@/content/services";
 import { specialties } from "@/content/specialties";
 import { pageMeta } from "@/lib/seo";
 
@@ -46,25 +45,24 @@ const staffingModels = [
 ] as const;
 
 const featuredSpecialties = specialties.slice(0, 4);
-const remainingSpecialties = specialties.slice(4);
 
 export default function HomePage() {
   return (
     <>
       <section className="hero-wash">
-        <div className="page-section section-block pt-12 md:pt-20 pb-16 md:pb-20">
+        <div className="page-section py-8 md:py-10">
           <div className="relative z-0 max-w-3xl">
             <p className="eyebrow-label">{company.brandName}</p>
-            <h1 className="mt-5 text-4xl leading-[1.12] text-balance sm:text-5xl lg:text-[3.35rem]">
+            <h1 className="mt-3 text-4xl leading-[1.12] text-balance sm:text-5xl lg:text-[3.35rem]">
               Scalable Healthcare Operations
               <br />
               AI-Powered RCM &amp; Specialized Staffing
             </h1>
-            <p className="mt-5 max-w-[65ch] text-lg leading-[1.65]">
+            <p className="mt-4 max-w-[65ch] text-lg leading-[1.65]">
               End-to-end revenue cycle management and dedicated workforce solutions—driven by
               certified US healthcare operators and risk-flagging AI.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <a href="#rcm-pillar" className="btn-primary h-11 px-6 text-sm">
                 Explore RCM Operations
               </a>
@@ -72,7 +70,7 @@ export default function HomePage() {
                 Explore Staffing &amp; Workforce
               </a>
             </div>
-            <p className="caption mt-6">
+            <p className="caption mt-4">
               {company.email} · {company.phoneDisplay} · No PHI on this website
             </p>
           </div>
@@ -80,16 +78,16 @@ export default function HomePage() {
       </section>
 
       <section
-        className="border-b border-slate-200 bg-white pt-16 md:pt-20"
+        className="border-b border-slate-200 bg-white"
         aria-labelledby="performance-heading"
       >
-        <div className="page-section pb-12 md:pb-16">
+        <div className="page-section py-8 md:py-10">
           <p className="eyebrow-label" id="performance-heading">
             Performance at a glance
           </p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {homeStats.map((stat) => (
-              <div key={stat.label} className="surface-card p-6 text-center sm:text-left">
+              <div key={stat.label} className="surface-card p-5 text-center sm:text-left">
                 <p className="stat-number text-3xl sm:text-4xl">{stat.value}</p>
                 <p className="mt-2 text-sm font-semibold text-fg">{stat.label}</p>
                 <p className="mt-1 text-xs font-medium uppercase tracking-wide text-[#0f766e]">
@@ -101,7 +99,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white pt-16 md:pt-24 pb-12 md:pb-16" id="services">
+      <section className="bg-white py-8 md:py-12" id="services">
         <div className="page-section">
           <div className="min-w-0">
             <p className="eyebrow-label">Services</p>
@@ -112,7 +110,7 @@ export default function HomePage() {
               <h2 className="text-3xl leading-tight sm:text-4xl">Two offerings. Two doors.</h2>
             </div>
           </div>
-          <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-2">
+          <div className="mt-8 grid items-stretch gap-6 lg:grid-cols-2">
             <article
               id="rcm-pillar"
               className="scroll-anchor flex h-full flex-col overflow-visible rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
@@ -197,56 +195,6 @@ export default function HomePage() {
                 Explore Staffing Solutions →
               </Link>
             </article>
-          </div>
-
-          <div className="mt-16 border-t border-slate-200 pt-12 md:mt-20 md:pt-16">
-            <p className="eyebrow-label">Continue from the catalog</p>
-            <h2 className="mt-2 text-2xl sm:text-3xl">The rest of the service list</h2>
-            <p className="mt-3 max-w-[65ch] text-sm leading-6 text-[#475569]">
-              The landing page covers the two doors. Individual RCM stations and remaining specialties
-              continue below—and in full on the Services pages.
-            </p>
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service) => (
-                <li key={service.slug}>
-                  <Link
-                    href={`/what-we-do/rcm/${service.slug}`}
-                    className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-4 no-underline shadow-sm transition-colors hover:border-slate-300 hover:bg-slate-50"
-                  >
-                    <span className="text-xs font-semibold uppercase tracking-wide text-[#0f766e]">
-                      {service.cycle}-cycle
-                    </span>
-                    <span className="mt-1 text-sm font-semibold text-[#0F172A]">{service.name}</span>
-                    <span className="mt-1 line-clamp-2 text-xs leading-5 text-[#475569]">
-                      {service.summary}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            {remainingSpecialties.length > 0 ? (
-              <div className="mt-10">
-                <p className="text-sm font-semibold text-[#0F172A]">More specialties</p>
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {remainingSpecialties.map((specialty) => (
-                    <li key={specialty.slug}>
-                      <Link
-                        href={`/specialties/${specialty.slug}`}
-                        className="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-[#334155] hover:border-slate-300 hover:text-[#0f766e]"
-                      >
-                        {specialty.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-            <Link
-              href="/what-we-do"
-              className="mt-8 inline-flex text-sm font-semibold text-[#0f766e] underline-offset-4 hover:underline"
-            >
-              View all offerings →
-            </Link>
           </div>
         </div>
       </section>
