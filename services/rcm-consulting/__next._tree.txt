@@ -1,6 +1,6 @@
-:HL["/rcm-portal/_next/static/chunks/1ydz8v40nzqju.css","style"]
+:HL["/rcm-portal/_next/static/chunks/1k_psdqiq2j04.css","style"]
 :HL["/rcm-portal/_next/static/media/03bda585a99c6450-s.p.32sris142tqlb.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/rcm-portal/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/rcm-portal/_next/static/media/fba5a26ea33df6a3-s.p.18rizl4rsrl42.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/rcm-portal/brand/logo.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4116,"slots":{"children":{"name":"services","param":null,"prefetchHints":4160,"slots":{"children":{"name":"slug","param":{"type":"d","key":"rcm-consulting","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"VSPAbpHwljO9Ri9epkkgY"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4116,"slots":{"children":{"name":"services","param":null,"prefetchHints":4160,"slots":{"children":{"name":"slug","param":{"type":"d","key":"rcm-consulting","siblings":["rcm","staffing"]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"yHyBKexGj_46s6sx5gv82"}
